@@ -1,23 +1,25 @@
+const {MongoClient} = require('mongodb');
+
 async function connect(){
     const uri="mongodb+srv://dbCorey:MVDhmYhNQkp2y8T@cluster0-ymebw.mongodb.net/sottlab?retryWrites=true&w=majority"
-    const {MongoClient} = require('mongodb');
     const client = new MongoClient(uri);
     return await client.connect();
 }
 
 async function listDatabases(client){
-    databasesList = await client.db().admin().listDatabases();
+    let databasesList = await client.db().admin().listDatabases();
  
-    return databasesList.databases
+    return databasesList.databases;
 };
 
 async function listEntries(client){
     const cursor = await client.db('sottlab').collection('historylab').find({}).limit(10);
-    return results = await cursor.toArray();
+    let results = await cursor.toArray();
+    return results;
 }
 
 async function deleteEntries(client, userName){
-    result = await client.db("sottlab").collection("logindata").deleteOne({ user: userName })
+    let result = await client.db("sottlab").collection("logindata").deleteOne({ user: userName })
     console.log(`${result.deletedCount} document(s) were deleted.`)
 }
 
