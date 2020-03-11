@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDataGrid from 'react-data-grid';
 
-const connection = require('./connection.js')
+const connection = require('../connection.js')
 const express = require('express');
 const app = express();
 
