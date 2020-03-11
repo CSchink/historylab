@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDataGrid from 'react-data-grid';
 
 const connection = require('../connection.js')
