@@ -4,7 +4,7 @@ import ReactDataGrid from 'react-data-grid';
 const connection = require('../connection.js')
 const express = require('express');
 const app = express();
-
+const moment = require('moment');
 
 class Table extends Component{
 
