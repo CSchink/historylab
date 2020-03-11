@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 const moment = require('moment');
 
-class Table extends Component{
+class Table extends React.Component{
 
     constructor(props) {
         super(props);
@@ -16,10 +16,10 @@ class Table extends Component{
     }
 
 componentDidMount(){
-    app.get('/listEntries', async function(req, res){
+    app.get('/', async function(req, res){
     let client = await connection.connect();
     let entries = await connection.listEntries(client);
-    res.json(entries);
+    // res.json(entries);
     this.setState({historylab: entries});
     
 })
