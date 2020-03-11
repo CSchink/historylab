@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import ReactDataGrid from 'react-data-grid';
 
-const connection = require('../connection.js')
+const connection = require('C:\Users\corey\Desktop\JavaScript\sottlabv04\src\connection.js')
 const express = require('express');
 const app = express();
 const moment = require('moment');
 
-class Table extends React.Component{
+class Table extends Component{
 
     constructor(props) {
         super(props);
