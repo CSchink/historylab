@@ -77,6 +77,7 @@ return(
     <ReactDataGrid
     columns={columns}
     rowGetter={rows}
+    rowsCount={10}
     minHeight={150} />);
 }
 }
