@@ -1,29 +1,51 @@
 import React, { Component } from 'react';
 import ReactDataGrid from 'react-data-grid';
+import {
+    Stitch,
+    AnonymousCredential,
+    RemoteMongoClient
+  } from "mongodb-stitch-browser-sdk";
 
-const connection = require('C:\Users\corey\Desktop\JavaScript\sottlabv04\src\connection.js')
-const express = require('express');
-const app = express();
+
 const moment = require('moment');
 
 class Table extends Component{
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             historylab: []     
         };
     }
-
-componentDidMount(){
-    app.get('/', async function(req, res){
-    let client = await connection.connect();
-    let entries = await connection.listEntries(client);
-    // res.json(entries);
-    this.setState({historylab: entries});
     
+componentDidMount(){
+    this.client = Stitch.initializeDefaultAppClient("historylab-lovsg");
+    const mongodb = this.client.getServiceClient(
+        RemoteMongoClient.factory,
+        "mongodb-atlas"
+      );
+      this.db = mongodb.db("historylab");
+      this.displayHistoryLabOnLoad();
+      
+    }
+
+displayHistoryLab(){
+    this.db
+    .collection("historylab")
+    .find({}, {limit: 100})
+    .asArray()
+    .then(historylab => {
+    this.setState({historylab});
 })
 }
+
+displayHistoryLabOnLoad(){
+    this.client.auth
+    .loginWithCredential(new AnonymousCredential())
+    .then(this.displayHistoryLab)
+    .catch(console.error)
+}
+
 
 render(){
     var columns = [
