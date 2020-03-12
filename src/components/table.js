@@ -59,9 +59,8 @@ render(){
         { key:"Page", name:"Page"  },
          ];
       
-    var rows = [] 
-      this.state.historylab.forEach((item) => {
-        var arr=[
+    var rows = this.state.historylab.forEach((item) => {
+        return [
         moment(item.Date).format('YYYY DD MMMM'),
         item.Entry,
         item.Century,
@@ -71,7 +70,7 @@ render(){
         item.Source,
         item.Page
     ]
-        rows.push(arr)
+    
       })
       let rowCount = rows.length;
 return(
