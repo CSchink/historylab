@@ -59,8 +59,20 @@ render(){
         { key:"Page", name:"Page"  },
          ];
       
-    var rows = this.state.historylab.map(entry => {
-        return entry.item});
+    var rows = [] 
+      this.state.historylab.forEach((item) => {
+        var arr=[
+        moment(item.Date).format('YYYY DD MMMM'),
+        item.Entry,
+        item.Century,
+        item.Event,
+        item.Originating,
+        item.Target,
+        item.Source,
+        item.Page
+    ]
+        rows.push(arr)
+      })
       let rowCount = rows.length;
 return(
     <ReactDataGrid
