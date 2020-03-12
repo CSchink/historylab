@@ -24,7 +24,7 @@ componentDidMount(){
         RemoteMongoClient.factory,
         "mongodb-atlas"
       );
-      this.db = mongodb.db("historylab");
+      this.db = mongodb.db("sottlab");
       this.displayHistoryLabOnLoad();
       
     }
