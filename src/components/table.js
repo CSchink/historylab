@@ -32,7 +32,7 @@ componentDidMount(){
 displayHistoryLab(){
     this.db
     .collection("historylab")
-    .find({}, {limit: 100})
+    .find({}, {limit: 10})
     .asArray()
     .then(historylab => {
     this.setState({historylab});
