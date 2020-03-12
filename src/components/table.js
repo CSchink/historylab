@@ -59,8 +59,9 @@ render(){
         { key:"Page", name:"Page"  },
          ];
       
-    var rows = this.state.historylab.forEach((item) => {
-        return [
+    var rows = []
+        this.state.historylab.forEach((item) => {
+        var data = [
         moment(item.Date).format('YYYY DD MMMM'),
         item.Entry,
         item.Century,
@@ -70,14 +71,12 @@ render(){
         item.Source,
         item.Page
     ]
-    
+        rows.push(data);
       })
-      let rowCount = rows.length;
 return(
     <ReactDataGrid
     columns={columns}
-    rowGetter={i => rows[i]}
-    rowsCount={rowCount}
+    rowGetter={rows}
     minHeight={150} />);
 }
 }
