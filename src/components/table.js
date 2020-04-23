@@ -1,13 +1,29 @@
+// // todos: look into security flows in express (authentication, authorization)
+// // finish Table
+
 import React, { Component } from 'react';
-import ReactDataGrid from 'react-data-grid';
+import MUIDataTable from "mui-datatables";
 import {
-    Stitch,
-    AnonymousCredential,
-    RemoteMongoClient
-  } from "mongodb-stitch-browser-sdk";
+    createMuiTheme,
+    MuiThemeProvider,
+    withStyles
+  } from "@material-ui/core/styles";
+ import {listEntries} from '../connection.js'
 
+var moment = require('moment');
 
-const moment = require('moment');
+const newTheme = createMuiTheme({
+    overrides: {
+      MUIDataTable: {
+
+        responsiveScroll: {
+        //   overflowX: 'none',
+        //   height: 'auto',
+          maxHeight: 'auto',
+        },
+      },
+    },
+})
 
 class Table extends Component{
 
@@ -18,68 +34,134 @@ class Table extends Component{
         };
     }
     
-componentDidMount(){
-    this.client = Stitch.initializeDefaultAppClient("historylab-lovsg");
-    const mongodb = this.client.getServiceClient(
-        RemoteMongoClient.factory,
-        "mongodb-atlas"
-      );
-      this.db = mongodb.db("sottlab");
-      this.displayHistoryLabOnLoad();
-      
+async componentDidMount(){
+      const entries = await listEntries()
+      this.setState({historylab: entries.data})
     }
 
-displayHistoryLab(){
-    this.db
-    .collection("historylab")
-    .find({}, {limit: 10})
-    .asArray()
-    .then(historylab => {
-    this.setState({historylab});
-})
-}
+// displayHistoryLab(){
+//     this.db
+//     .collection("historylab")
+//     .find({}, {limit: 10})
+//     .asArray()
+//     .then(historylab => {
+//     this.setState({historylab});
+// })
+// }
 
-displayHistoryLabOnLoad(){
-    this.client.auth
-    .loginWithCredential(new AnonymousCredential())
-    .then(this.displayHistoryLab)
-    .catch(console.error)
-}
+// displayHistoryLabOnLoad(){
+//     this.client.auth
+//     .loginWithCredential(new AnonymousCredential())
+//     .then(this.displayHistoryLab)
+//     .catch(console.error)
+// }
 
 
 render(){
-    var columns = [
-        { key: 'Date', name: 'Date' },
-        { key: 'Entry', name: 'Entry' },
-        { key: "Century", name: "Century"},
-        { key: "Event", name:"Event"  },
-        { key: "Originating", name:"Originating" },
-        { key:"Target", name:"Target"  },
-        { key: "Source", name:"Source"  },
-        { key:"Page", name:"Page"  },
-         ];
-      
-    var rows = []
-        this.state.historylab.forEach((item) => {
-        var data = [
-        moment(item.Date).format('YYYY DD MMMM'),
-        item.Entry,
-        item.Century,
-        item.Event,
-        item.Originating,
-        item.Target,
-        item.Source,
-        item.Page
+    const options = {
+        filterType: 'multiselect',
+        selectableRows: 'none',
+        responsive: 'scroll',
+        rowsPerPage: 25,
+        download: false,
+        rowsPerPageOptions: [10,25,50,100],
+}
+    var columns = [ 
+        {
+            name:"date",
+            label: "Date",
+            options:{
+                filter: false,
+                sort: true,
+                sortDirection: 'desc'
+            }
+        },
+        {
+        name: "entry",
+        label:"Entry",
+        options:{
+            filter: false,
+            sort: false
+        }
+        }, 
+        {
+            name: "century",
+            label: "Century",
+        options:{
+            filter: true,
+            sort: true
+        } 
+    },
+        {
+        name: 'event',
+        label: 'Event',
+        options: {
+            filter: true,
+            sort: false,
+           }
+        },
+        {
+        name: 'originating',
+        label: 'Originating',
+        options: {
+            filter: true,
+            sort: false,
+            display: false,
+           }
+        },
+        {
+        name: "target",
+        label: 'Target',
+        options: {
+            filter: true,
+            sort: false,
+            display: false,
+           }
+        },
+        {
+            name: "source",
+            label: 'Source',
+            options: {
+                filter: true,
+                sort: false,
+                display: false,
+                }
+            },
+            {
+                name: "page",
+                label: 'Page',
+                options: {
+                    filter: false,
+                    sort: false,
+                    display: false,
+                    }
+                }
     ]
-        rows.push(data);
-      })
+        
+    var data=[]
+    this.state.historylab.forEach((item) => {
+        var arr=[moment(item.Date).format('YYYY DD MMMM'),
+                item.Entry,
+                item.Century,
+                item.Event,
+                item.Originating,
+                item.Target,
+                item.Source,
+                item.Page
+            ]
+        data.push(arr)
+        })
 return(
-    <ReactDataGrid
-    columns={columns}
-    rowGetter={rows}
-    rowsCount={10}
-    minHeight={150} />);
+    <div>
+    <MuiThemeProvider theme={newTheme}>
+        <MUIDataTable
+                    columns={columns}
+                    data={data}
+                    options={options}
+                    />
+    </MuiThemeProvider>
+    </div>
+)
 }
 }
-
 export default Table;
