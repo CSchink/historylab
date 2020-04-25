@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-async function listEntries(){
+export async function listEntries(){
 
 return axios.get('http://localhost:3000/listEntries')
 
@@ -12,11 +12,10 @@ return axios.get('http://localhost:3000/listEntries')
 //     console.log(`${result.deletedCount} document(s) were deleted.`)
 // }
 
-async function userCheck(username, password){
+export async function userCheck(username, password){
     
     let userData = axios.get('http://localhost:3000/userCheck')
     let results = userData.filter(x => {return x.user})
     return results;
 }
 
-module.exports = { listEntries, userCheck } ;

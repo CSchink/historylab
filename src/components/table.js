@@ -19,7 +19,7 @@ const newTheme = createMuiTheme({
         responsiveScroll: {
         //   overflowX: 'none',
         //   height: 'auto',
-          maxHeight: 'auto',
+        maxHeight: 'none !important'
         },
       },
     },
@@ -38,25 +38,6 @@ async componentDidMount(){
       const entries = await listEntries()
       this.setState({historylab: entries.data})
     }
-
-// displayHistoryLab(){
-//     this.db
-//     .collection("historylab")
-//     .find({}, {limit: 10})
-//     .asArray()
-//     .then(historylab => {
-//     this.setState({historylab});
-// })
-// }
-
-// displayHistoryLabOnLoad(){
-//     this.client.auth
-//     .loginWithCredential(new AnonymousCredential())
-//     .then(this.displayHistoryLab)
-//     .catch(console.error)
-// }
-
-
 render(){
     const options = {
         filterType: 'multiselect',
