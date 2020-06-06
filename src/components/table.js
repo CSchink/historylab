@@ -5,7 +5,8 @@ import {
     MuiThemeProvider,
     withStyles
   } from "@material-ui/core/styles";
- import {listEntries} from '../connection.js'
+import {listEntries} from '../connection.js'
+import { hasToken } from '../util/tokenutil.js';
 
 var moment = require('moment');
 
@@ -32,6 +33,10 @@ class Table extends Component{
     }
     
 async componentDidMount(){
+
+    if(!hasToken()){
+        this.props.history.push("/");
+    } 
       const entries = await listEntries()
       this.setState({historylab: entries.data})
     }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import { CircularProgress } from '@material-ui/core';
 import instance from '../util/axiosutil';
+import { hasToken } from '../util/tokenutil';
 
 
 // todos: add register button that calls createEntry endpoint and check against mongodb
@@ -13,7 +14,9 @@ function Login(props){
 //    const start = useState("");
 //    const username = start[0];
 //    const setUsername = start[1];
-
+    if(hasToken()){
+        props.history.push('/data')
+    }
 
    return (
     <div style={{
@@ -79,6 +82,7 @@ function Login(props){
         sessionStorage.setItem("token", result.data)
         const token = sessionStorage.getItem("token")
         console.log(token)
+        props.history.push('/data')
     }}>Submit</button>
     
     <button 
