@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 import { CircularProgress } from '@material-ui/core';
-const axios = require('axios');
+import instance from '../util/axiosutil';
 
 
 // todos: add register button that calls createEntry endpoint and check against mongodb
@@ -73,7 +73,7 @@ function Login(props){
     type="submit"
     style= {{padding: '5px'}}
     onClick={async () =>{
-        const result = await axios.default.post("http://localhost:3000/login",
+        const result = await instance.post("/login",
         {username, password})
         console.log(result.data)
         sessionStorage.setItem("token", result.data)
@@ -86,7 +86,7 @@ function Login(props){
     onClick={async () => {
         // Question for Brian: how to access the actual token?
        var token = sessionStorage.getItem("token")
-       var result = await axios.default.get("http://localhost:3000/", {
+       var result = await instance.get("/", {
            headers: {authorization:token}
        })
        console.log(result.status);

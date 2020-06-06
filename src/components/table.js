@@ -1,6 +1,3 @@
-// // todos: look into security flows in express (authentication, authorization)
-// // finish Table
-
 import React, { Component } from 'react';
 import MUIDataTable from "mui-datatables";
 import {

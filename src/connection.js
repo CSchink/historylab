@@ -1,11 +1,11 @@
-const axios = require('axios');
+import instance from './util/axiosutil'
 
 export async function listEntries(){
   
 const token = sessionStorage.getItem('token')
 
-return axios.get('http://localhost:3000/listEntries', {
-    headers: {authorization:token}
+return instance.get('/listEntries', {
+    headers: {authorization:token} 
 })
 
 }

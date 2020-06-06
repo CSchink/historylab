@@ -23,8 +23,8 @@ function App() {
             </ul>                  
           </nav>
 
-        <Route path="/" component={Login} exact/>
-        <Route path="/data" component={Table}/>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/data" component={Table}/>
         </div>
       </Switch>
     </BrowserRouter>
