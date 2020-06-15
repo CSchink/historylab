@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import '../App.css';
-import { CircularProgress } from '@material-ui/core';
 import instance from '../util/axiosutil';
 import { hasToken } from '../util/tokenutil';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // todos: add register button that calls createEntry endpoint and check against mongodb
 
@@ -19,12 +18,13 @@ function Login(props){
     }
 
    return (
+      
     <div style={{
     display: 'flex',
     flexDirection: 'column',
-    width: '35%',
-    marginLeft: 'auto',
-    marginRight: 'auto'
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: '200px'
       }}>
     <p style={
         {
@@ -47,7 +47,7 @@ function Login(props){
     }}>
 
     </input>
-   
+    <br></br>
     <input 
     style= {{
         padding: '5px',
@@ -74,7 +74,13 @@ function Login(props){
         }
     }><button 
     type="submit"
-    style= {{padding: '5px'}}
+    style= {{
+        color:"white",
+        padding: '5px',
+        border:'none',
+        borderRadius: '12px',
+        backgroundColor: '#1E90FF'
+    }}
     onClick={async () =>{
         const result = await instance.post("/login",
         {username, password})
@@ -85,7 +91,7 @@ function Login(props){
         props.history.push('/data')
     }}>Submit</button>
     
-    <button 
+    {/* <button 
     style= {{padding: '5px'}}
     onClick={async () => {
         // Question for Brian: how to access the actual token?
@@ -94,9 +100,10 @@ function Login(props){
            headers: {authorization:token}
        })
        console.log(result.status);
-    }}>Make Request</button>
+    }}>Make Request</button> */}
     </div>
     </div>
+    
    );
 }
 
