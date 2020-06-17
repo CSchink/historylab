@@ -8,7 +8,7 @@ import {
 import {listEntries} from '../connection.js'
 import { hasToken } from '../util/tokenutil.js';
 
-var moment = require('moment');
+const moment = require('moment');
 
 const newTheme = createMuiTheme({
     overrides: {
@@ -43,11 +43,11 @@ async componentDidMount(){
 render(){
     const options = {
         filterType: 'multiselect',
-        selectableRows: 'none',
-        responsive: 'scroll',
+        responsive: 'standard',
         rowsPerPage: 25,
         download: false,
         rowsPerPageOptions: [10,25,50,100],
+        fixedHeader: true
 }
     var columns = [ 
         {
@@ -56,6 +56,13 @@ render(){
             options:{
                 filter: false,
                 sort: true,
+                customSort: (data, colIndex, order) => {
+                    return data.sort((a, b) => {
+                        
+                        return (new Date(a.data[colIndex]) < new Date(b.data[colIndex]) ? -1: 1 ) * (order === 'desc' ? 1 : -1);
+                    });
+                    },
+                    
                 sortDirection: 'desc'
             }
         },
@@ -123,7 +130,7 @@ render(){
         
     var data=[]
     this.state.historylab.forEach((item) => {
-        var arr=[moment(item.Date).format('YYYY DD MMMM'),
+        var arr=[moment(item.Date).format('YYYY/MM/DD'),
                 item.Entry,
                 item.Century,
                 item.Event,

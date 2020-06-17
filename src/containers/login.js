@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import '../App.css';
 import instance from '../util/axiosutil';
 import { hasToken } from '../util/tokenutil';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Image from 'react-bootstrap/Image';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // todos: add register button that calls createEntry endpoint and check against mongodb
@@ -18,17 +20,26 @@ function Login(props){
     }
 
    return (
-      
+     <div>
+     <Jumbotron style={{
+        backgroundColor: 'white',
+        height: '300px',
+        backgroundImage: "url(" + "https://assets.ldscdn.org/b0/0b/b00b93661ec060e9dbc77dce6ce876d4226fbbed/garden_of_eden_clawson_art.jpeg" + ")",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat' 
+     }}>
+     </Jumbotron>
     <div style={{
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: '200px'
+    // paddingTop: '50px'
       }}>
     <p style={
         {
-            fontSize: 40,
+            fontSize: 60,
             fontWeight: 300,
             marginLeft: 'auto',
             marginRight: 'auto'
@@ -68,7 +79,7 @@ function Login(props){
         {
             display: 'flex',
             flexDirection: 'column',
-            width: '150px',
+            width: '100px',
             marginLeft: 'auto',
             marginRight: 'auto'
         }
@@ -103,7 +114,7 @@ function Login(props){
     }}>Make Request</button> */}
     </div>
     </div>
-    
+    </div>
    );
 }
 
