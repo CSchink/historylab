@@ -34,9 +34,9 @@ class Table extends Component{
     
 async componentDidMount(){
 
-    if(!hasToken()){
-        this.props.history.push("/");
-    } 
+    // if(!hasToken()){
+    //     this.props.history.push("/");
+    // } 
       const entries = await listEntries()
       this.setState({historylab: entries.data})
     }

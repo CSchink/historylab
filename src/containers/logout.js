@@ -1,24 +1,9 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React from 'react';
 import Nav from 'react-bootstrap/Nav'
+import { useAuth } from '../context/auth-context';
 
-class Logout extends Component {
-    state ={
-        navigate: false
-    };
-
-    logout = () => {
-        sessionStorage.removeItem('token');
-        this.setState({ navigate: true});
-    }
-    render(){
-        const {navigate} = this.state;
-
-        if (navigate) {
-            return <Redirect to="/" push={true} />;
-        }
-        return <Nav.Link onClick={this.logout}>Sign out</Nav.Link>
-    }
+function Logout () {
+    return <Nav.Link onClick={useAuth().logout}>Log out</Nav.Link>
 }
 
 export default Logout;

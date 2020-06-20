@@ -5,10 +5,12 @@ import { hasToken } from '../util/tokenutil';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Image from 'react-bootstrap/Image';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useAuth } from '../context/auth-context';
 
 // todos: add register button that calls createEntry endpoint and check against mongodb
 
 function Login(props){
+    const authContext = useAuth();
    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 // Array Destructuring:
@@ -95,11 +97,7 @@ function Login(props){
     onClick={async () =>{
         const result = await instance.post("/login",
         {username, password})
-        console.log(result.data)
-        sessionStorage.setItem("token", result.data)
-        const token = sessionStorage.getItem("token")
-        console.log(token)
-        props.history.push('/data')
+        authContext.login(result.data);
     }}>Submit</button>
     
     {/* <button 
