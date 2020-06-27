@@ -1,21 +1,30 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
+import React, { useEffect } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Route, BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Table from "./components/table";
 import Login from "./containers/login";
 import Logout from "./containers/logout";
 import { useAuth } from "./context/auth-context";
-import history from "./util/historyutil";
+// import history from './util/historyutil'
 
 function App() {
   const authContext = useAuth();
-  console.log(authContext);
+  // console.log(authContext);
+  // When one thing happens you want something else to happen
+  // useEffect(() => {
+  //   if(authContext.loggedIn){
+  //     console.log("redirect to table")
+  //   } else {
+  //     console.log("redirect to login")
+  //   }
+  // }, [authContext.loggedIn])
   return (
-    <div>
-      <BrowserRouter>
+    
+      // <Router>
+        <div>
         {authContext.loggedIn && (
           <Navbar bg="primary" variant="dark" expand="lg">
             <Navbar.Brand href="/data">History Lab</Navbar.Brand>
@@ -28,15 +37,16 @@ function App() {
             </Navbar.Collapse>
           </Navbar>
         )}
-        {
-          authContext.loggedIn ? <Table/> : <Login/>
-        }
-        {/* <Switch>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/data" component={Table} />
-        </Switch> */}
-      </BrowserRouter>
-    </div>
+        {/* {authContext.loggedIn ? <Table /> : <Login />} */}
+        <Switch>
+          {/* <Route path="/" component={Login} />
+          <Route path="/data" component={Table} /> */}
+          <Route exact path='/'><Login/></Route>
+          <Route path ='/data'><Table/></Route>
+        </Switch>
+        </div>
+      // </Router>
+    
   );
 }
 

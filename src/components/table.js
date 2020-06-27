@@ -5,8 +5,9 @@ import {
     MuiThemeProvider,
     withStyles
   } from "@material-ui/core/styles";
-import {listEntries} from '../connection.js'
+import {listEntries} from '../connection.js';
 import { hasToken } from '../util/tokenutil.js';
+import Chip from '@material-ui/core/Chip';
 
 const moment = require('moment');
 
@@ -45,9 +46,11 @@ render(){
         filterType: 'multiselect',
         responsive: 'standard',
         rowsPerPage: 25,
-        download: false,
+        download: true,
         rowsPerPageOptions: [10,25,50,100],
-        fixedHeader: true
+        fixedHeader: true,
+        selectableRowsHideCheckboxes: true,
+        selectableRowsOnClick: true
 }
     var columns = [ 
         {
@@ -79,24 +82,31 @@ render(){
             label: "Century",
         options:{
             filter: true,
-            sort: true
+            sort: true,
+            display: false
         } 
     },
         {
-        name: 'event',
-        label: 'Event',
+        name: 'Tags',
+      
         options: {
             filter: true,
             sort: false,
-           }
-        },
+            filterType: 'multiselect',
+            customBodyRenderLite: (value) => {
+                return value.map( (val, key) => {
+                    return <Chip label={val} key={key} />
+            });
+        }
+    }
+    },
         {
         name: 'originating',
         label: 'Originating',
         options: {
             filter: true,
             sort: false,
-            display: false,
+            display: false
            }
         },
         {
