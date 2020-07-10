@@ -8,6 +8,7 @@ import {
 import {listEntries} from '../connection.js';
 import { hasToken } from '../util/tokenutil.js';
 import Chip from '@material-ui/core/Chip';
+import CustomToolbarSelect from './customtoolbar.js';
 
 const moment = require('moment');
 
@@ -29,9 +30,11 @@ class Table extends Component{
     constructor() {
         super();
         this.state = {
-            historylab: []     
+            historylab: [], 
+            rowsSelected: false
         };
     }
+    
     
 async componentDidMount(){
 
@@ -41,6 +44,12 @@ async componentDidMount(){
       const entries = await listEntries()
       this.setState({historylab: entries.data})
     }
+
+    updateSelectableRowsHideCheckboxes = (event) => {
+        this.setState({
+            rowsSelected: event.target.checked
+        });
+      }
 render(){
     const options = {
         filterType: 'multiselect',
@@ -49,8 +58,13 @@ render(){
         download: true,
         rowsPerPageOptions: [10,25,50,100],
         fixedHeader: true,
+        selectableRows: 'single',
         selectableRowsHideCheckboxes: true,
-        selectableRowsOnClick: true
+        selectableRowsOnClick: true,
+        customToolbarSelect: (selectedRows, displayData, setSelectedRows) => {
+            
+            return <CustomToolbarSelect />
+        }
 }
     var columns = [ 
         {
@@ -83,7 +97,8 @@ render(){
         options:{
             filter: true,
             sort: true,
-            display: false
+            display: false,
+            print: false
         } 
     },
         {
@@ -92,6 +107,7 @@ render(){
         options: {
             filter: true,
             sort: false,
+            print: false,
             filterType: 'multiselect',
             customBodyRenderLite: (value) => {
                 return value.map( (val, key) => {
@@ -106,7 +122,8 @@ render(){
         options: {
             filter: true,
             sort: false,
-            display: false
+            display: false,
+            print: false
            }
         },
         {
@@ -116,6 +133,7 @@ render(){
             filter: true,
             sort: false,
             display: false,
+            print: false
            }
         },
         {
@@ -125,6 +143,7 @@ render(){
                 filter: true,
                 sort: false,
                 display: false,
+                print: false
                 }
             },
             {
@@ -134,6 +153,7 @@ render(){
                     filter: false,
                     sort: false,
                     display: false,
+                    print: false
                     }
                 }
     ]

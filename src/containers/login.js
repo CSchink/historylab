@@ -6,6 +6,8 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import Image from "react-bootstrap/Image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useAuth } from "../context/auth-context";
+import Navbar from "react-bootstrap/Navbar";
+import Container from 'react-bootstrap/Container';
 // import history from '../util/historyutil';
 import {
     useHistory
@@ -27,19 +29,30 @@ function Login(props) {
 
   return (
     <div>
-      <Jumbotron
+      {/* <Container style={{width: '700px'}}> */}
+        <Jumbotron
         style={{
           backgroundColor: "white",
-          height: "300px",
+          height: "400px",
           backgroundImage:
             "url(" +
-            "https://assets.ldscdn.org/b0/0b/b00b93661ec060e9dbc77dce6ce876d4226fbbed/garden_of_eden_clawson_art.jpeg" +
+            "http://wallpaperose.com/wp-content/uploads/2014/02/Lighthouse-Shining-over-Rough-Seas.jpg" +
             ")",
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
       ></Jumbotron>
+      {/* </Container> */}
+      <Navbar fixed="top">
+         <Navbar.Brand href="#home">
+   <img
+     src="https://www.sott.net/fb/sottlogo.jpg"
+     width="150"
+     height="80"
+   />
+  </Navbar.Brand>       
+       </Navbar>
       <div
         style={{
           display: "flex",

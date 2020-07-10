@@ -8,6 +8,7 @@ import Table from "./components/table";
 import Login from "./containers/login";
 import Logout from "./containers/logout";
 import { useAuth } from "./context/auth-context";
+import Tutorial from "./components/tutorial";
 // import history from './util/historyutil'
 
 function App() {
@@ -26,24 +27,31 @@ function App() {
       // <Router>
         <div>
         {authContext.loggedIn && (
+      
           <Navbar bg="primary" variant="dark" expand="lg">
             <Navbar.Brand href="/data">History Lab</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="justify-content-end" style={{ width: "100%" }}>
-                <Nav.Link href="#home">FAQs</Nav.Link>
+                <Nav.Link href="/tutorial">About</Nav.Link>
                 <Logout />
               </Nav>
             </Navbar.Collapse>
           </Navbar>
+        
+        
         )}
         {/* {authContext.loggedIn ? <Table /> : <Login />} */}
+      
+          
         <Switch>
           {/* <Route path="/" component={Login} />
           <Route path="/data" component={Table} /> */}
           <Route exact path='/'><Login/></Route>
           <Route path ='/data'><Table/></Route>
+          <Route path ='/tutorial'><Tutorial /></Route>
         </Switch>
+        
         </div>
       // </Router>
     

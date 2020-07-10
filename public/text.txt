@@ -1,0 +1,37 @@
+Editable Table Data:
+
+Front End
+
+Precise Routes
+
+    Find and replace /data with /history
+
+Edit Screen
+    Need edit button upon row selection - built in?
+    Need identifier for row being edited (key or object)
+        Option 1:
+            pass id to new screen
+            new screen does look-up to find object again
+        Option 2:
+            pass object entirely to avoid searching for data object
+    Need another component for editing
+        whole new screen or modal?
+            modal component button for entering data
+                will reset upon submission
+                will remain open
+            edit button for editing modal
+                will close upon submission
+                return to table
+            
+Back-End 
+
+UpdateOne vs InsertOne in MongoDB
+
+    Adding New Routes   
+        /history
+            Post Routes
+                Build InsertOne Mongodb function
+                Reference the backend login route
+                Reference the frontend call to login endpoint
+            Put Routes
+                Build UpdateOne Mongodb function
