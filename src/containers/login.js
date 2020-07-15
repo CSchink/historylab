@@ -44,7 +44,7 @@ function Login(props) {
         }}
       ></Jumbotron>
       {/* </Container> */}
-      {/* <Navbar fixed="top">
+      <Navbar fixed="top">
          <Navbar.Brand href="#home">
    <img
      src="https://www.sott.net/fb/sottlogo.jpg"
@@ -52,7 +52,7 @@ function Login(props) {
      height="80"
    />
   </Navbar.Brand>       
-       </Navbar> */}
+       </Navbar>
       <div
         style={{
           display: "flex",

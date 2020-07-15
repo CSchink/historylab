@@ -102,18 +102,13 @@ render(){
         } 
     },
         {
-        name: 'Tags',
+        name: 'Event',
       
         options: {
             filter: true,
             sort: false,
             print: false,
             filterType: 'multiselect',
-            customBodyRenderLite: (value) => {
-                return value.map( (val, key) => {
-                    return <Chip label={val} key={key} />
-            });
-        }
     }
     },
         {
@@ -137,13 +132,36 @@ render(){
            }
         },
         {
+            name:"ptags",
+            label: 'Ponerology',
+            options:{
+                filter: true,
+                sort: false,
+                print: false
+            }
+        },
+        {
+            name:"htags",
+            label: 'Tags',
+            options:{
+                filter: true,
+                sort: false,
+                print: false
+            }
+        },
+        {
             name: "source",
             label: 'Source',
             options: {
                 filter: true,
                 sort: false,
                 display: false,
-                print: false
+                print: false,
+                customBodyRenderLite: (value) => {
+                    return value.map( (val, key) => {
+                        return <Chip label={val} key={key} />
+                });
+            }
                 }
             },
             {
@@ -153,7 +171,12 @@ render(){
                     filter: false,
                     sort: false,
                     display: false,
-                    print: false
+                    print: false,
+                    customBodyRenderLite: (value) => {
+                        return value.map( (val, key) => {
+                            return <Chip label={val} key={key} />
+                    });
+                }
                     }
                 }
     ]
@@ -166,6 +189,8 @@ render(){
                 item.Event,
                 item.Originating,
                 item.Target,
+                item.ptags,
+                item.htags,
                 item.Source,
                 item.Page
             ]
