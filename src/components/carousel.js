@@ -62,6 +62,12 @@ class ScrollSpyPage extends Component {
           >
             General Tags
           </MDBScrollspyListItem>
+          <MDBScrollspyListItem
+            href="#section4"
+            active={this.state.active === 3}
+          >
+              Event
+            </MDBScrollspyListItem>
         </MDBScrollspyList>
 
         <MDBTabContent>
@@ -101,7 +107,7 @@ class ScrollSpyPage extends Component {
               the general user.
             </p>
             <p>
-              These cultural centers have been identified empirically, and
+              These cultural centers are based on both empirical study and the work of R.G. Collingwood.  They
               consist of:
             </p>
             <ul>
@@ -109,6 +115,7 @@ class ScrollSpyPage extends Component {
               <ul>
                 <li>Art</li>
                 <li>Religion</li>
+                <li>Science</li>
                 <li>History</li>
                 <li>Philosophy</li>
               </ul>
@@ -124,8 +131,7 @@ class ScrollSpyPage extends Component {
             <p>
               The purpose of these tags is to understand the impact each of
               these centers has on the other, for generating social theory in
-              general and making the often complicated work of the social
-              machine more understandable for the individual.
+              general, and testing Collingwood's theories laid out in works like Speculum Mentis and Idea of History.
             </p>
             <h4>Ponerology</h4>
             <br></br>
@@ -153,6 +159,10 @@ class ScrollSpyPage extends Component {
               research. Thus someone like William McKinnley is not tagged in the
               events at this moment. However, the database design makes it
               possible to add such a tag without disrupting the data structure.
+            </p>
+            <h4 id="section4">Events</h4>
+            <p>
+
             </p>
           </MDBScrollspyText>
         </MDBTabContent>
