@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useAuth } from "../context/auth-context";
 import Navbar from "react-bootstrap/Navbar";
 import Container from 'react-bootstrap/Container';
+import FrontNav from '../components/loginbar'
 // import history from '../util/historyutil';
 import {
     useHistory
@@ -30,6 +31,7 @@ function Login(props) {
   return (
     <div>
       {/* <Container style={{width: '700px'}}> */}
+        <FrontNav />
         <Jumbotron
         style={{
           backgroundColor: "white",
@@ -44,15 +46,7 @@ function Login(props) {
         }}
       ></Jumbotron>
       {/* </Container> */}
-      <Navbar fixed="top">
-         <Navbar.Brand href="#home">
-   <img
-     src="https://www.sott.net/fb/sottlogo.jpg"
-     width="150"
-     height="80"
-   />
-  </Navbar.Brand>       
-       </Navbar>
+      
       <div
         style={{
           display: "flex",

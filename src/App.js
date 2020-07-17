@@ -2,6 +2,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import {
+  MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
+  MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
+  } from "mdbreact";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Table from "./components/table";
@@ -28,7 +32,7 @@ function App() {
         <div>
         {authContext.loggedIn && (
       
-          <Navbar bg="primary" variant="dark" expand="lg">
+          <Navbar color="blue" bg="primary" variant="dark" expand="lg">
             <Navbar.Brand href="/data">History Lab</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

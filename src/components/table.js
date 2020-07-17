@@ -31,7 +31,7 @@ class Table extends Component{
         super();
         this.state = {
             historylab: [], 
-            rowsSelected: false
+            // rowsSelected: false
         };
     }
     
@@ -45,11 +45,11 @@ async componentDidMount(){
       this.setState({historylab: entries.data})
     }
 
-    updateSelectableRowsHideCheckboxes = (event) => {
-        this.setState({
-            rowsSelected: event.target.checked
-        });
-      }
+    // updateSelectableRowsHideCheckboxes = (event) => {
+    //     this.setState({
+    //         rowsSelected: event.target.checked
+    //     });
+    //   }
 render(){
     const options = {
         filterType: 'multiselect',
@@ -137,7 +137,14 @@ render(){
             options:{
                 filter: true,
                 sort: false,
-                print: false
+                print: false,
+                customBodyRender: (value) => {
+                   return value.map( (val, key) => {
+                        if(val !==null){
+                            return <Chip label={val} key={key} />
+                        }
+                });
+            }
             }
         },
         {
@@ -146,7 +153,15 @@ render(){
             options:{
                 filter: true,
                 sort: false,
-                print: false
+                print: false,
+                filterType: 'multiselect',
+                customBodyRender: (value) => {
+                    return value.map( (val, key) => {
+                         if(val !== null){
+                             return <Chip label={val} key={key} />
+                         }
+                 });
+            }
             }
         },
         {
@@ -156,12 +171,7 @@ render(){
                 filter: true,
                 sort: false,
                 display: false,
-                print: false,
-                customBodyRenderLite: (value) => {
-                    return value.map( (val, key) => {
-                        return <Chip label={val} key={key} />
-                });
-            }
+                print: false
                 }
             },
             {
@@ -172,18 +182,15 @@ render(){
                     sort: false,
                     display: false,
                     print: false,
-                    customBodyRenderLite: (value) => {
-                        return value.map( (val, key) => {
-                            return <Chip label={val} key={key} />
-                    });
-                }
+                    
                     }
                 }
     ]
-        
-    var data=[]
+    let data = []
+    
     this.state.historylab.forEach((item) => {
-        var arr=[moment(item.Date).format('YYYY/MM/DD'),
+        
+    var arr=[moment(item.Date).format('YYYY/MM/DD'),
                 item.Entry,
                 item.Century,
                 item.Event,
@@ -195,6 +202,7 @@ render(){
                 item.Page
             ]
         data.push(arr)
+        
         })
 return(
     <div>
@@ -205,6 +213,7 @@ return(
                     options={options}
                     />
     </MuiThemeProvider>
+    
     </div>
 )
 }
