@@ -12,11 +12,23 @@ import {
 import ScrollSpyPage from "./carousel";
 import YouTubeTutorial from "./youtube";
 import YouTube from "react-youtube";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
 
 const BlogPage = () => {
   return (
-    <MDBCard className="my-5 px-5 pb-5">
-      {/* <MDBView className="rounded z-depth-2 mb-lg-0 mb-4">
+    <div>
+      <MDBCard className="my-5 px-5">
+        <MDBCardBody color="blue">
+          <h2 className="h1-responsive font-weight-bold text-center my-5">
+            Welcome to the SOTT Lab Tutorial
+          </h2>
+        </MDBCardBody>
+        
+      </MDBCard>
+      <MDBCard className="my-5 px-5">
+        {/* <MDBView className="rounded z-depth-2 mb-lg-0 mb-4">
         <img
           className="img-fluid"
           src={require("../assets/lighthouse.jpg")}
@@ -26,13 +38,9 @@ const BlogPage = () => {
           <MDBMask overlay="white-slight" />
         </a>
       </MDBView> */}
-      <MDBCardBody>
-        <h2 className="h1-responsive font-weight-bold text-center my-5">
-          Welcome to SOTT Lab
-        </h2>
-
-        <MDBRow>
-          {/* <MDBCol lg="5">
+        <MDBCardBody>
+          <MDBRow>
+            <MDBCol lg="5">
             <MDBView className="rounded z-depth-2 mb-lg-0 mb-4">
               <img
                 className="img-fluid"
@@ -43,13 +51,13 @@ const BlogPage = () => {
                 <MDBMask overlay="white-slight" />
               </a>
             </MDBView>
-          </MDBCol> */}
-     
+          </MDBCol>
+
             <div style={{ fontWeight: "italic" }}>
               {/* <h2 className="font-weight-bold mb-3 p-0">
                 <strong>Welcome to SOTT Lab</strong>
               </h2> */}
-              <h2>The Tutorial</h2>
+              <h2 className='text-center'>About</h2>
               <br></br>
               <p>
                 This page is meant to provide both a practical and a theoretical
@@ -77,22 +85,20 @@ const BlogPage = () => {
                   Organize the deluge of data available on SOTT for SOTT editors
                   and, potentially, for posterity.
                 </li>
-                <li>Integrate information from books, research articles, and news articles into one area for a 'really big book'</li>
+                <li>
+                  Integrate information from books, research articles, and news
+                  articles into one area for a 'really big book'
+                </li>
               </ul>
-              <p>Here's a brief overview of the database's tagging system:</p>
             </div>
             <br></br>
-            <MDBCol lg="5" className="float-right">
-              <YouTubeTutorial/>
-          </MDBCol>
-           
-        </MDBRow>
-      </MDBCardBody>
-      <ScrollSpyPage />
- 
-      
+            {/* <MDBCol lg="5" className="float-right">
+              <YouTubeTutorial />
+            </MDBCol> */}
+          </MDBRow>
+        </MDBCardBody>
 
-      {/* <p>
+        {/* <p>
         I hope you find it useful as well. Please read on for more info, or
         enjoy the tutorial below
       </p>
@@ -125,11 +131,11 @@ const BlogPage = () => {
         continue to test his theory both today and to apply it to history, using
         the present to repair the past and prepare the future..{" "}
       </p> */}
-      {/* <br></br>
+        {/* <br></br>
       <h3></h3>
       <br></br> */}
 
-      {/* <h1 style={{textAlign:'center', fontWeight:}}>Tutorial</h1>
+        {/* <h1 style={{textAlign:'center', fontWeight:}}>Tutorial</h1>
       <div
         className="container-fluid"
         style={{
@@ -142,7 +148,27 @@ const BlogPage = () => {
       >
         <YouTubeTutorial />
       </div> */}
-    </MDBCard>
+      
+      <h3 className="h3-responsive font-weight-bold text-center my-5">
+            Watch the Tutorial
+          </h3>
+        
+        <MDBCardBody className='text-center'>
+          <YouTubeTutorial />
+          </MDBCardBody>
+        
+          <h3 className="h3-responsive font-weight-bold text-center my-5">
+            Introduction to the Tagging System
+          </h3>
+        
+      
+          <ScrollSpyPage />
+   
+        
+          
+
+      </MDBCard>
+    </div>
   );
 };
 

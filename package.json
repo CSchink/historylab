@@ -16,7 +16,6 @@
     "express": "^4.17.1",
     "history": "^5.0.0",
     "mdbootstrap": "^4.19.1",
-    "mdbreact": "git+https://oauth2:yEQyg_cZXbz9oLBZ4si2@git.mdbootstrap.com/mdb/react/re-pro.git",
     "moment": "^2.26.0",
     "mongodb": "^3.5.9",
     "mongodb-stitch-browser-sdk": "^4.8.0",

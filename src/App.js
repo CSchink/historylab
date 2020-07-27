@@ -31,13 +31,13 @@ function App() {
       // <Router>
         <div>
         {authContext.loggedIn && (
-      
-          <Navbar color="blue" bg="primary" variant="dark" expand="lg">
+          
+          <Navbar bg="primary" variant="dark" expand="lg">
             <Navbar.Brand href="/data">History Lab</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="justify-content-end" style={{ width: "100%" }}>
-                <Nav.Link href="/tutorial">About</Nav.Link>
+                <Nav.Link href="/tutorial">Tutorial</Nav.Link>
                 <Logout />
               </Nav>
             </Navbar.Collapse>
