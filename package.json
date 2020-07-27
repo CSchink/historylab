@@ -6,6 +6,7 @@
   },
   "private": true,
   "dependencies": {
+  "mdbreact": "git+https://oauth2:yEQyg_cZXbz9oLBZ4si2@git.mdbootstrap.com/mdb/react/re-pro.git",
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
