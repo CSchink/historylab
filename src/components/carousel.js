@@ -62,12 +62,7 @@ class ScrollSpyPage extends Component {
           >
             General Tags
           </MDBScrollspyListItem>
-          <MDBScrollspyListItem
-            href="#section4"
-            active={this.state.active === 3}
-          >
-              Event
-            </MDBScrollspyListItem>
+       
         </MDBScrollspyList>
 
         <MDBTabContent>
