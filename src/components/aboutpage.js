@@ -18,25 +18,30 @@ MDBSmoothScroll,
 import "../index.css";
 import Pills from "./pills";
 import YouTubeTutorial from "./youtube";
+import {
+    useHistory
+  } from "react-router-dom";
 
-class ClassicFormPage extends React.Component {
-  state = {
-    collapseID: ""
-  };
 
-  toggleCollapse = collapseID => () =>
-    this.setState(prevState => ({
-      collapseID: prevState.collapseID !== collapseID ? collapseID : ""
-    }));
+function ClassicFormPage (){
+//   state = {
+//     collapseID: ""
+//   };
 
-  render() {
-    const overlay = (
-      <div
-        id="sidenav-overlay"
-        style={{ backgroundColor: "transparent" }}
-        onClick={this.toggleCollapse("navbarCollapse")}
-      />
-    );
+//   toggleCollapse = collapseID => () =>
+//     this.setState(prevState => ({
+//       collapseID: prevState.collapseID !== collapseID ? collapseID : ""
+//     }));
+    
+//   render() {
+//     const overlay = (
+//       <div
+//         id="sidenav-overlay"
+//         style={{ backgroundColor: "transparent" }}
+//         onClick={this.toggleCollapse("navbarCollapse")}
+//       />
+//     );
+const history = useHistory();
     return (
       <div id="classicformpage">
           
@@ -50,7 +55,7 @@ class ClassicFormPage extends React.Component {
                   className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
                 >
                   <h1 className="h1-responsive font-weight-bold">
-                    Welcome to the SOTT Lab Tutorial
+                    Welcome to SOTT Lab
                   </h1>
                   <hr className="hr-light" />
                   <h6 className="mb-4">
@@ -62,10 +67,13 @@ class ClassicFormPage extends React.Component {
                 
                 <MDBRow>
 
-
-                  <MDBSmoothScroll to="section1"><MDBBtn outline color="light">
-                   Lean More
+                <MDBBtn outline color="elegant" onClick={() => {history.push('/data')}}>
+                   Go to History Lab
+                  </MDBBtn>
+                  <MDBSmoothScroll to="section1"><MDBBtn outline color="elegant">
+                   Tutorial
                   </MDBBtn></MDBSmoothScroll>
+                  
                   {/* <MDBSmoothScroll to="section2"><MDBBtn outline color="light">
                     Watch the Tutorial
                   </MDBBtn></MDBSmoothScroll> */}
@@ -87,6 +95,6 @@ class ClassicFormPage extends React.Component {
       </div>
     );
   }
-}
+
 
 export default ClassicFormPage;

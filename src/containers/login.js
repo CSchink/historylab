@@ -123,7 +123,7 @@ function Login(props) {
                 password,
               });
               authContext.login(result.data);
-              history.push('/data')
+              history.push('/tutorial')
             }}
           >
             Submit
