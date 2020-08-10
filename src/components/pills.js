@@ -117,6 +117,22 @@ class Pills extends Component {
                 articles into one area for a 'really big book'
               </li>
             </ul>
+            <p>
+              The purpose of the Science Lab will be to bring together our
+              understanding of Man, our Machine, and the Cosmos into one area.
+            </p>
+            <p>
+              The purpose of Philosophy Lab will be to provide a system that
+              stores and structure insights from Science and History
+              Lab for a structured and detailed system of philosophy that is
+              uniquely SOTT and FOTCM-oriented and inspired.{" "}
+            </p>
+            <p>
+              And lastly, uniting each of these will be a personalized user
+              interface through which one can interact with the Lab, store data,
+              build one's own tables, and leave messages and insights for
+              others.  Think of it like a Facebook, but for people of the Spirit.
+            </p>
           </MDBTabPane>
           <MDBTabPane tabId="2">
             <h3>Overview</h3>
@@ -132,7 +148,7 @@ class Pills extends Component {
             </p>
             <p>
               Their usefulness can also depend on why you're using the database.
-              For example, general tags (under the category {''}
+              For example, general tags (under the category {""}
               <strong>Tags</strong>) will be useful for researching current
               events and their connections with distant events.
             </p>
@@ -269,12 +285,13 @@ class Pills extends Component {
               This is where the tagging system comes into place.
             </p>
             <p>
-              In the <strong>Tags</strong> category one finds a certain hierarchy to the tagging
-              system. The general line of force is tagged (for example,
-              capitalism), but there are other macro, messo and micro elements
-              that can be considered - like employment, unemployment, poor,
-              middle class, rich, etc. There are Big Tags, sub-Tags, and sub-sub
-              Tags, corresponding to the hierarchical nature of reality.
+              In the <strong>Tags</strong> category one finds a certain
+              hierarchy to the tagging system. The general line of force is
+              tagged (for example, capitalism), but there are other macro, messo
+              and micro elements that can be considered - like employment,
+              unemployment, poor, middle class, rich, etc. There are Big Tags,
+              sub-Tags, and sub-sub Tags, corresponding to the hierarchical
+              nature of reality.
             </p>
 
             <p>
@@ -315,8 +332,6 @@ class Pills extends Component {
               would be Russia. This is in order to maintain the integrity of
               these categories.
             </p>
-
-            
           </MDBTabPane>
           <MDBTabPane tabId="4">
             <h3>Watch the Tutorial Video Below</h3>

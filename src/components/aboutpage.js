@@ -64,7 +64,7 @@ class ClassicFormPage extends React.Component {
 
 
                   <MDBSmoothScroll to="section1"><MDBBtn outline color="light">
-                    General Overview
+                   Lean More
                   </MDBBtn></MDBSmoothScroll>
                   {/* <MDBSmoothScroll to="section2"><MDBBtn outline color="light">
                     Watch the Tutorial
