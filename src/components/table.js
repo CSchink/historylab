@@ -9,6 +9,9 @@ import { listEntries } from "../connection.js";
 import { hasToken } from "../util/tokenutil.js";
 import Chip from "@material-ui/core/Chip";
 import CustomToolbarSelect from "./customtoolbar.js";
+import { Modal } from "@material-ui/core";
+import DataEntry from "./modal.js";
+
 
 const moment = require("moment");
 
@@ -37,15 +40,15 @@ class Table extends Component {
     // if(!hasToken()){
     //     this.props.history.push("/");
     // }
-    const entries = await listEntries();
+    const entries = await listEntries();  
     this.setState({ historylab: entries.data });
   }
 
-  // updateSelectableRowsHideCheckboxes = (event) => {
-  //     this.setState({
-  //         rowsSelected: event.target.checked
-  //     });
-  //   }
+  updateSelectableRowsHideCheckboxes = (event) => {
+      this.setState({
+          rowsSelected: event.target.checked
+      });
+    }
   render() {
     const options = {
       filterType: "multiselect",
@@ -55,7 +58,6 @@ class Table extends Component {
       rowsPerPageOptions: [10, 25, 50, 100],
       fixedHeader: true,
       selectableRows: "single",
-      selectableRowsHideCheckboxes: true,
       selectableRowsOnClick: true,
       customToolbarSelect: (selectedRows, displayData, setSelectedRows) => {
         return <CustomToolbarSelect />;
@@ -142,6 +144,7 @@ class Table extends Component {
           filterType: "multiselect",
           display: false,
           customBodyRender: (value) => {
+            console.log(value)
             return value.map((val, key) => {
               if (val !== null) {
                 return <Chip label={val} key={key} />;
@@ -225,6 +228,7 @@ class Table extends Component {
     });
     return (
       <div>
+        <DataEntry/>
         <MuiThemeProvider theme={newTheme}>
           <MUIDataTable columns={columns} data={data} options={options} />
         </MuiThemeProvider>

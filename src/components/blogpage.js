@@ -8,16 +8,16 @@ import {
   MDBIcon,
   MDBView,
   MDBBtn,
+  MDBSmoothScroll,
+  MDBContainer 
 } from "mdbreact";
 import ScrollSpyPage from "./carousel";
 import YouTubeTutorial from "./youtube";
-import YouTube from "react-youtube";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "bootstrap-css-only/css/bootstrap.min.css";
-import "mdbreact/dist/css/mdb.css";
+import "../index.css";
 
 const BlogPage = () => {
   return (
+    
     <div>
       <MDBCard className="my-5 px-5">
         <MDBCardBody color="blue">
@@ -28,7 +28,7 @@ const BlogPage = () => {
         
       </MDBCard>
       <MDBCard className="my-5 px-5">
-        {/* <MDBView className="rounded z-depth-2 mb-lg-0 mb-4">
+        <MDBView className="rounded z-depth-2 mb-lg-0 mb-4">
         <img
           className="img-fluid"
           src={require("../assets/lighthouse.jpg")}
@@ -37,10 +37,10 @@ const BlogPage = () => {
         <a href="#!">
           <MDBMask overlay="white-slight" />
         </a>
-      </MDBView> */}
+      </MDBView>
         <MDBCardBody>
-          <MDBRow>
-            <MDBCol lg="5">
+          {/* <MDBRow>
+            <MDBCol fluid>
             <MDBView className="rounded z-depth-2 mb-lg-0 mb-4">
               <img
                 className="img-fluid"
@@ -52,6 +52,17 @@ const BlogPage = () => {
               </a>
             </MDBView>
           </MDBCol>
+      
+      </MDBRow> */}
+      <div style={{textAlign: 'center'}}>
+      <MDBSmoothScroll to="section1">Watch the Tutorial</MDBSmoothScroll>
+      <MDBSmoothScroll to="section2">Data Entry and Structure</MDBSmoothScroll>
+      </div>
+      </MDBCardBody>
+      
+      <MDBContainer>
+          <MDBRow className="py-5">
+            <MDBCol md="12" className="text-center">
 
             <div style={{ fontWeight: "italic" }}>
               {/* <h2 className="font-weight-bold mb-3 p-0">
@@ -91,12 +102,15 @@ const BlogPage = () => {
                 </li>
               </ul>
             </div>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
             <br></br>
             {/* <MDBCol lg="5" className="float-right">
               <YouTubeTutorial />
             </MDBCol> */}
-          </MDBRow>
-        </MDBCardBody>
+          
+        
 
         {/* <p>
         I hope you find it useful as well. Please read on for more info, or
@@ -169,6 +183,7 @@ const BlogPage = () => {
 
       </MDBCard>
     </div>
+   
   );
 };
 

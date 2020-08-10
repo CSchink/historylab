@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../index.css";
 import "../App.css";
 import instance from "../util/axiosutil";
 import { hasToken } from "../util/tokenutil";
@@ -10,6 +11,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from 'react-bootstrap/Container';
 import FrontNav from '../components/loginbar'
 // import history from '../util/historyutil';
+
 import {
     useHistory
   } from "react-router-dom";
@@ -29,6 +31,8 @@ function Login(props) {
 //   }
 
   return (
+    <div id="classicformpage">
+        
     <div>
       {/* <Container style={{width: '700px'}}> */}
         <FrontNav />
@@ -137,6 +141,7 @@ function Login(props) {
     }}>Make Request</button> */}
         </div>
       </div>
+    </div>
     </div>
   );
 }

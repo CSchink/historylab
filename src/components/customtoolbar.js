@@ -1,46 +1,81 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
 import instance from "../util/axiosutil";
+import {
+  MDBContainer,
+  MDBBtn,
+  MDBModal,
+  MDBModalBody,
+  MDBModalHeader,
+  MDBModalFooter,
+  MDBAutocomplete,
+  MDBInput,
+} from "mdbreact";
 
 const defaultToolbarSelectStyles = {
-    iconButton: {
-    },
-    iconContainer: {
-      marginRight: "24px",
-    },
+  iconButton: {},
+  iconContainer: {
+    marginRight: "24px",
+  },
+};
+
+function CustomToolbarSelect(data) {
+  // const { classes } = this.props;
+  const [entry, setEntry] = useState("");
+  const [modal, setModal] = useState(false);
+
+  const hideModal = () => {
+    setModal(false);
   };
-  
-  
-  
-function CustomToolbarSelect (data){
-    // const { classes } = this.props;
-    const [entry, setEntry] = useState("");
-    
-    return(
-        <div >
-        <Tooltip title={"Edit"} onClick={async () => {
-            setEntry(data)
-            console.log(data)
+
+  const showModal = () => {
+    setModal(true);
+  };
+
+  return (
+    <div>
+      <MDBContainer>
+        <MDBModal size="lg" isOpen={modal}>
+          <MDBModalHeader>Edit Below</MDBModalHeader>
+          <MDBModalBody>
             
-              const newData = await instance.get("/findOne", {
-                 entry
-              });
-              console.log(data)
-            }} >
-          <IconButton >
-            <EditIcon />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title={"Delete"}>
-          <IconButton >
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      </div>
-    )
+          </MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn color="secondary" onClick={hideModal}>
+              Close
+            </MDBBtn>
+            <MDBBtn color="primary">Save changes</MDBBtn>
+          </MDBModalFooter>
+        </MDBModal>
+      </MDBContainer>
+
+      <Tooltip title={"Edit"}>
+        <IconButton
+          onClick={showModal}
+
+          //   async () => {
+          //   setEntry(data);
+          //   console.log(data);
+
+          //   const newData = await instance.get("/findOne", {
+          //     entry,
+          //   });
+          //   console.log(data);
+          // }}
+        >
+          <EditIcon />
+        </IconButton>
+      </Tooltip>
+      <Tooltip title={"Delete"}>
+        <IconButton>
+          <DeleteIcon />
+        </IconButton>
+      </Tooltip>
+    </div>
+  );
 }
 
 export default CustomToolbarSelect;

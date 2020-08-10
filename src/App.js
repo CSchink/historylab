@@ -3,12 +3,13 @@ import React, { useEffect } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.css";
+import "./index.css";
 import Table from "./components/table";
 import Login from "./containers/login";
 import Logout from "./containers/logout";
 import { useAuth } from "./context/auth-context";
 import Tutorial from "./components/tutorial";
+import ClassicFormPage from "./components/aboutpage"
 // import history from './util/historyutil'
 
 function App() {
@@ -49,7 +50,7 @@ function App() {
           <Route path="/data" component={Table} /> */}
           <Route exact path='/'><Login/></Route>
           <Route path ='/data'><Table/></Route>
-          <Route path ='/tutorial'><Tutorial /></Route>
+          <Route path ='/tutorial'><ClassicFormPage/></Route>
         </Switch>
         
         </div>
