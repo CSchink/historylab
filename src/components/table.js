@@ -144,7 +144,9 @@ class Table extends Component {
           filterType: "multiselect",
           display: false,
           customBodyRender: (value) => {
-            console.log(value)
+            console.log("This is the ", value)
+            console.log("This is the " + value)
+            console.log(`This is the ${value}`)
             return value.map((val, key) => {
               if (val !== null) {
                 return <Chip label={val} key={key} />;
