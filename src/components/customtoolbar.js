@@ -14,6 +14,7 @@ import {
   MDBAutocomplete,
   MDBInput,
 } from "mdbreact";
+import ModalSkeleton, { modalType } from "./modalskeleton";
 
 const defaultToolbarSelectStyles = {
   iconButton: {},
@@ -22,7 +23,7 @@ const defaultToolbarSelectStyles = {
   },
 };
 
-function CustomToolbarSelect(data) {
+function CustomToolbarSelect(props) {
   // const { classes } = this.props;
   const [entry, setEntry] = useState("");
   const [modal, setModal] = useState(false);
@@ -37,7 +38,7 @@ function CustomToolbarSelect(data) {
 
   return (
     <div>
-      <MDBContainer>
+      {/* <MDBContainer>
         <MDBModal size="lg" isOpen={modal}>
           <MDBModalHeader>Edit Below</MDBModalHeader>
           <MDBModalBody>
@@ -50,7 +51,14 @@ function CustomToolbarSelect(data) {
             <MDBBtn color="primary">Save changes</MDBBtn>
           </MDBModalFooter>
         </MDBModal>
-      </MDBContainer>
+      </MDBContainer> */}
+      {modal && (
+        <ModalSkeleton
+          saveAction={modalType.edit}
+          data={props.editData}
+          hideModal={hideModal}
+        />
+      )}
 
       <Tooltip title={"Edit"}>
         <IconButton

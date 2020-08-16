@@ -11,7 +11,7 @@ import Chip from "@material-ui/core/Chip";
 import CustomToolbarSelect from "./customtoolbar.js";
 import { Modal } from "@material-ui/core";
 import DataEntry from "./modal.js";
-
+import ModalSkeleton from "./modalskeleton.js";
 
 const moment = require("moment");
 
@@ -40,16 +40,35 @@ class Table extends Component {
     // if(!hasToken()){
     //     this.props.history.push("/");
     // }
-    const entries = await listEntries();  
+    const entries = await listEntries();
     this.setState({ historylab: entries.data });
   }
 
   updateSelectableRowsHideCheckboxes = (event) => {
-      this.setState({
-          rowsSelected: event.target.checked
-      });
-    }
+    this.setState({
+      rowsSelected: event.target.checked,
+    });
+  };
   render() {
+    let data = [];
+
+    this.state.historylab.forEach((item) => {
+      var arr = [
+        moment(item.Date).format("YYYY/MM/DD"),
+        item.Entry,
+        item.Century,
+        item.Category,
+        item.Originating,
+        item.Target,
+        item.Cultural,
+        item.ptags,
+        item.htags,
+        item.Source,
+        item.Page,
+      ];
+      data.push(arr);
+    });
+
     const options = {
       filterType: "multiselect",
       responsive: "standard",
@@ -60,9 +79,22 @@ class Table extends Component {
       selectableRows: "single",
       selectableRowsOnClick: true,
       customToolbarSelect: (selectedRows, displayData, setSelectedRows) => {
-        return <CustomToolbarSelect />;
+        console.log(selectedRows);
+        console.log(selectedRows.data[0].dataIndex);
+        console.log(selectedRows.data[0].index);
+        let editData = undefined;
+
+        if (selectedRows.data.length > 0) {
+          // let editData = displayData[selectedRows.data[0].index]
+          // console.log(editData.data)
+          editData = this.state.historylab[selectedRows.data[0].dataIndex];
+          console.log(editData);
+        }
+
+        return <CustomToolbarSelect editData={editData} />;
       },
     };
+
     var columns = [
       {
         name: "date",
@@ -112,7 +144,7 @@ class Table extends Component {
           filterType: "multiselect",
         },
       },
-      
+
       {
         name: "originating",
         label: "Originating",
@@ -135,7 +167,7 @@ class Table extends Component {
       },
       {
         name: "Cultural",
-        label:"Cultural",
+        label: "Cultural",
 
         options: {
           filter: true,
@@ -144,9 +176,6 @@ class Table extends Component {
           filterType: "multiselect",
           display: false,
           customBodyRender: (value) => {
-            console.log("This is the ", value)
-            console.log("This is the " + value)
-            console.log(`This is the ${value}`)
             return value.map((val, key) => {
               if (val !== null) {
                 return <Chip label={val} key={key} />;
@@ -210,27 +239,10 @@ class Table extends Component {
         },
       },
     ];
-    let data = [];
 
-    this.state.historylab.forEach((item) => {
-      var arr = [
-        moment(item.Date).format("YYYY/MM/DD"),
-        item.Entry,
-        item.Century,
-        item.Category,
-        item.Originating,
-        item.Target,
-        item.Cultural,
-        item.ptags,
-        item.htags,
-        item.Source,
-        item.Page,
-      ];
-      data.push(arr);
-    });
     return (
       <div>
-        <DataEntry/>
+        <ModalSkeleton />
         <MuiThemeProvider theme={newTheme}>
           <MUIDataTable columns={columns} data={data} options={options} />
         </MuiThemeProvider>

@@ -15,7 +15,8 @@ import {
 import instance from "../util/axiosutil";
 import { createEntry } from "../connection";
 import TagsAutoSelect from "./tagsautoselect";
-
+import ModalSkeleton from "./modalskeleton";
+import {modalType} from "./modalskeleton"
 function DataEntry() {
   const [modal, setModal] = useState(false);
   //   const [state, setState] = useState({
@@ -64,6 +65,22 @@ function DataEntry() {
   const showModal = () => {
     setModal(true);
   };
+
+  async function sendData (){
+      await createEntry({
+        Date: date,
+        Entry: entry,
+        Century: century,
+        Category: category,
+        Origin: origin,
+        Target: target,
+        Cultural: ctags.split(",").map((r) => r.trim()),
+        ptags: ptags.split(",").map((r) => r.trim()),
+        htags: tags.split(",").map((r) => r.trim()),
+        Source: source,
+        Page: page,
+      });
+  }
 
   //   function resetState() {
   //     setState({

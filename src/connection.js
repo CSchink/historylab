@@ -33,6 +33,13 @@ export async function listScienceEntries(){
   })
 }
 
+export async function editData(request){
+
+  return instance.post("/editData", request, {
+    headers: {authorization: token}
+  })
+}
+
 // async function deleteEntries(client, userName){
 //     let result = await client.db("sottlab").collection("logindata").deleteOne({ user: userName })
 //     console.log(`${result.deletedCount} document(s) were deleted.`)
