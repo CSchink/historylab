@@ -56,7 +56,7 @@ function CustomToolbarSelect(props) {
         <ModalSkeleton
           saveAction={modalType.edit}
           data={props.editData}
-          hideModal={hideModal}
+          isOpen={modal}
         />
       )}
 

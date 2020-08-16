@@ -156,7 +156,7 @@ async function editHistoryLab(){
       </Fragment> */}
 
       <MDBContainer>
-        <MDBModal size="lg" isOpen={true}>
+        <MDBModal size="lg" isOpen={props.modal}>
           <MDBModalHeader>{props.header}</MDBModalHeader>
           <MDBModalBody>
             <MDBContainer fluid>
@@ -282,10 +282,11 @@ async function editHistoryLab(){
                     //todo: reset the state
                     await sendData()
                     initialState()
+                    
                 } else if (props.saveAction === modalType.edit) {
                     //todo: close the modal
                     await editHistoryLab()
-                    props.hideModal()
+                    
                 }
               }}
             >
