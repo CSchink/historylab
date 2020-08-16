@@ -242,7 +242,7 @@ class Table extends Component {
 
     return (
       <div>
-        <ModalSkeleton />
+        {/* <ModalSkeleton /> */}
         <MuiThemeProvider theme={newTheme}>
           <MUIDataTable columns={columns} data={data} options={options} />
         </MuiThemeProvider>

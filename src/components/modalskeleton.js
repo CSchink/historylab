@@ -76,7 +76,7 @@ function ModalSkeleton(props) {
   const [source, setSource] = useState(props.data?.Source ?? "");
   const [page, setPage] = useState(props.data?.Page ?? "");
   const [_id, set_id] = useState("")
-
+  set_id(props.data?._id)
   const initialState = () => {
     setDate("");
     setEntry("");
@@ -109,7 +109,7 @@ function ModalSkeleton(props) {
 }
 
 async function editHistoryLab(){
-    set_id(props.data?._id)
+    
     await editData({
        _id: _id,
        Date: date,
@@ -218,7 +218,7 @@ async function editHistoryLab(){
                     label="SOTT Category"
                     value={category}
                     onChange={(event) => {
-                      console.log(event.target);
+                     
                       setCategory(event.target.value);
                     }}
                   />
