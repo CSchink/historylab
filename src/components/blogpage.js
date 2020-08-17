@@ -89,9 +89,10 @@ const SignUp = () => {
             <br></br>
             <MultiSelect />
           </form>
+          <br></br>
           <div className="text-center text-md-left">
             <br></br>
-            <MDBBtn color="primary" size="md" onClick={async () => {await userSignUp({
+            <MDBBtn color="primary" size="lg" onClick={async () => {await userSignUp({
                 user: username,
                 password: password,
                 firstname: fname,
