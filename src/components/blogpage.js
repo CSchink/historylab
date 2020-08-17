@@ -17,6 +17,13 @@ function SignUp () {
   const [password, setPassword] = useState("");
   const [passwordconfirm, setPasswordConfirm] = useState("");
 
+  function resetState(){
+    setEmail("")
+    setCountry("")
+    setUsername("")
+    setPassword("")
+    setPasswordConfirm("")
+  }
   return (
     <MDBContainer>
       <h2 className="h1-responsive font-weight-bold text-center my-5">
@@ -127,6 +134,7 @@ function SignUp () {
                   password: password,
                   country: country,
                 });
+                resetState()
               }}
             >
               Submit

@@ -2,7 +2,7 @@
   "name": "sottlabv04",
   "version": "0.1.0",
   "engines": {
-    "node": "10.15.1"
+    "node": "12.18.3"
   },
   "private": true,
   "dependencies": {
