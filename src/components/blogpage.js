@@ -10,7 +10,7 @@ import {
 import { userSignUp } from "../connection";
 import MultiSelect from "./multiselect";
 
-const SignUp = () => {
+function SignUp () {
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
   const [username, setUsername] = useState("");
