@@ -23,14 +23,14 @@ const defaultToolbarSelectStyles = {
   },
 };
 
-function CustomToolbarSelect(props) {
+function CustomToolbarSelect(props, variant) {
   // const { classes } = this.props;
-  const [entry, setEntry] = useState("");
+
   const [modal, setModal] = useState(false);
 
-  const hideModal = () => {
-    setModal(false);
-  };
+  const hideModal = () =>{
+    setModal(false)
+  }
 
   const showModal = () => {
     setModal(true);
@@ -56,7 +56,9 @@ function CustomToolbarSelect(props) {
         <ModalSkeleton
           saveAction={modalType.edit}
           data={props.editData}
-          isOpen={modal}
+          hideModal={hideModal}
+          showModal={showModal}
+          
         />
       )}
 

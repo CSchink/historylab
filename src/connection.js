@@ -34,8 +34,15 @@ export async function listScienceEntries(){
 }
 
 export async function editData(request){
+ console.log(request)
+  return instance.put("/editData", request, {
+    headers: {authorization: token}
+  })
+}
 
-  return instance.post("/editData", request, {
+export async function userSignUp(request){
+
+  return instance.post("/signup", request, {
     headers: {authorization: token}
   })
 }

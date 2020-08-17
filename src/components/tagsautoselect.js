@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { MDBSelect } from "mdbreact";
 
-// 
-
-class TagsAutoSelect extends Component {
+class SelectPage extends Component {
   state = {
     options: [
       {
@@ -44,4 +42,4 @@ class TagsAutoSelect extends Component {
   }
 }
 
-export default TagsAutoSelect;
+export default SelectPage;

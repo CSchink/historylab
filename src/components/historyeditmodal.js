@@ -44,8 +44,8 @@ export const modalType = {
 // b({first: 1});
 // <Moda data={{date: 1234}}
 
-function ModalSkeleton(props) {
-  const [modal, setModal] = useState(true);
+function HistoryEditModal(props) {
+//   const [modal, setModal] = useState(true);
   //   const [state, setState] = useState({
   //     date: "",
   //     entry: "",
@@ -64,20 +64,19 @@ function ModalSkeleton(props) {
 // COALESCE(1, 2); // 1
 // COALESCE(null, 2); // 2
 
-  const [date, setDate] = useState(props.data?.Date ?? "");
-  const [entry, setEntry] = useState(props.data?.Entry ?? "");
-  const [century, setCentury] = useState(props.data?.Century ?? "");
-  const [category, setCategory] = useState(props.data?.Category ?? "");
-  const [origin, setOrigin] = useState(props.data?.Originating ?? "");
-  const [target, setTarget] = useState(props.data?.Target ?? "");
-  const [ctags, setCtags] = useState(props.data?.Cultural ?? "");
-  const [ptags, setPtags] = useState(props.data?.ptags ?? "");
-  const [tags, setTags] = useState(props.data?.htags ?? "");
-  const [source, setSource] = useState(props.data?.Source ?? "");
-  const [page, setPage] = useState(props.data?.Page ?? "");
-  const [_id, set_id] = useState(props.data._id)
-
-
+  const [date, setDate] = useState(props.data?.Date);
+  const [entry, setEntry] = useState(props.data?.Entry);
+  const [century, setCentury] = useState(props.data?.Centur);
+  const [category, setCategory] = useState(props.data?.Category);
+  const [origin, setOrigin] = useState(props.data?.Originating);
+  const [target, setTarget] = useState(props.data?.Target);
+  const [ctags, setCtags] = useState(props.data?.Cultural);
+  const [ptags, setPtags] = useState(props.data?.ptags);
+  const [tags, setTags] = useState(props.data?.htags);
+  const [source, setSource] = useState(props.data?.Source);
+  const [page, setPage] = useState(props.data?.Page);
+//   const [_id, set_id] = useState("")
+//   set_id(props.data?._id)
   const initialState = () => {
     setDate("");
     setEntry("");
@@ -109,8 +108,6 @@ function ModalSkeleton(props) {
     });
 }
 
-
-
 async function editHistoryLab(){
     
     await editData({
@@ -128,7 +125,6 @@ async function editHistoryLab(){
        Page: page,
     })
 }
-
 
   //   function resetState() {
   //     setState({
@@ -160,7 +156,7 @@ async function editHistoryLab(){
       </Fragment> */}
 
       <MDBContainer>
-        <MDBModal size="lg" isOpen={props.showModal}>
+        <MDBModal size="lg" isOpen={props.modal}>
           <MDBModalHeader>{props.header}</MDBModalHeader>
           <MDBModalBody>
             <MDBContainer fluid>
@@ -275,7 +271,7 @@ async function editHistoryLab(){
           </MDBModalBody>
 
           <MDBModalFooter>
-            <MDBBtn color="secondary" onClick={props.hideModal}>
+            <MDBBtn color="secondary" onClick={props.modal}>
               Close
             </MDBBtn>
             <MDBBtn
@@ -289,9 +285,8 @@ async function editHistoryLab(){
                     
                 } else if (props.saveAction === modalType.edit) {
                     //todo: close the modal
-     
                     await editHistoryLab()
-                    props.hideModal()
+                    
                 }
               }}
             >
@@ -304,4 +299,4 @@ async function editHistoryLab(){
   );
 }
 
-export default ModalSkeleton;
+export default HistoryEditModal;

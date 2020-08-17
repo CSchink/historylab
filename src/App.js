@@ -11,6 +11,7 @@ import { useAuth } from "./context/auth-context";
 import Tutorial from "./components/tutorial";
 import ClassicFormPage from "./components/aboutpage";
 import ScienceLab from "./components/sciencelab";
+import SignUp from "./components/blogpage";
 // import history from './util/historyutil'
 
 function App() {
@@ -29,15 +30,15 @@ function App() {
     <div>
       {authContext.loggedIn && (
         <Navbar bg="primary" variant="dark" expand="lg">
-          <Navbar.Brand href="/data">HistoryLab</Navbar.Brand>
+          <Navbar.Brand href="/data">History Lab</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/sciencelab">ScienceLab</Nav.Link>
-              <Nav.Link href="/tutorial">Tutorial</Nav.Link>
+              <Nav.Link href="/sciencelab">Science Lab</Nav.Link>
+              <Nav.Link href="/tutorial">Tutorial Page</Nav.Link>
             </Nav>
             <Nav className="justify-content-end" style={{ width: "100%" }}>
-              
+              <Nav.Link href="/signup">Sign Up</Nav.Link>
               <Logout />
             </Nav>
           </Navbar.Collapse>
@@ -59,6 +60,9 @@ function App() {
         </Route>
         <Route path="/sciencelab">
           <ScienceLab />
+        </Route>
+        <Route path="/signup">
+          <SignUp />
         </Route>
       </Switch>
     </div>

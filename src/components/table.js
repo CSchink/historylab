@@ -33,9 +33,10 @@ class Table extends Component {
     this.state = {
       historylab: [],
       // rowsSelected: false
+      
     };
   }
-
+  
   async componentDidMount() {
     // if(!hasToken()){
     //     this.props.history.push("/");
@@ -50,6 +51,7 @@ class Table extends Component {
     });
   };
   render() {
+   
     let data = [];
 
     this.state.historylab.forEach((item) => {
@@ -79,16 +81,13 @@ class Table extends Component {
       selectableRows: "single",
       selectableRowsOnClick: true,
       customToolbarSelect: (selectedRows, displayData, setSelectedRows) => {
-        console.log(selectedRows);
-        console.log(selectedRows.data[0].dataIndex);
-        console.log(selectedRows.data[0].index);
         let editData = undefined;
 
         if (selectedRows.data.length > 0) {
           // let editData = displayData[selectedRows.data[0].index]
           // console.log(editData.data)
           editData = this.state.historylab[selectedRows.data[0].dataIndex];
-          console.log(editData);
+         
         }
 
         return <CustomToolbarSelect editData={editData} />;
@@ -242,7 +241,7 @@ class Table extends Component {
 
     return (
       <div>
-        {/* <ModalSkeleton /> */}
+        <DataEntry />
         <MuiThemeProvider theme={newTheme}>
           <MUIDataTable columns={columns} data={data} options={options} />
         </MuiThemeProvider>

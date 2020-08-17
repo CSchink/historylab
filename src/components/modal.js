@@ -233,7 +233,7 @@ function DataEntry() {
             <MDBBtn
               color="primary"
               onClick={async () => {
-                await createEntry({
+                await sendData({
                   Date: date,
                   Entry: entry,
                   Century: century,
