@@ -52,16 +52,16 @@ function App() {
         <Route exact path="/">
           <Login />
         </Route>
-        <Route path="/data">
+        <Route exact path="/data">
           <Table />
         </Route>
-        <Route path="/tutorial">
+        <Route exact path="/tutorial">
           <ClassicFormPage />
         </Route>
-        <Route path="/sciencelab">
+        <Route exact path="/sciencelab">
           <ScienceLab />
         </Route>
-        <Route path="/signup">
+        <Route exact path="/signup">
           <SignUp />
         </Route>
       </Switch>
