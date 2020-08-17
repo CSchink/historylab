@@ -9,6 +9,7 @@ import {
 } from "mdbreact";
 import { userSignUp } from "../connection";
 import MultiSelect from "./multiselect";
+import instance from "../util/axiosutil";
 
 const SignUp = () => {
   const [fname, setFname] = useState("");
@@ -31,7 +32,10 @@ const SignUp = () => {
       
       <MDBRow>
         <MDBCol md="12" className="md-0 mb-5">
-          <form>
+          <form onSubmit={await instance.post("/login", {
+                username,
+                password,
+              })}>
           <div className="block-example border-top border-primary">
             <MDBRow>
               <MDBCol md="6">
@@ -42,6 +46,18 @@ const SignUp = () => {
               <MDBCol md="6">
                 <div className="md-form mb-0">
                   <MDBInput type="text" id="contact-email" label="Last Name" />
+                </div>
+              </MDBCol>
+            </MDBRow>
+            <MDBRow>
+              <MDBCol md="12">
+                <div className="md-form mb-0">
+                  <MDBInput type="text" id="contact-subject" label="Username" />
+                </div>
+              </MDBCol>
+              <MDBCol md="12">
+                <div className="md-form mb-0">
+                  <MDBInput type="password" id="contact-subject" label="Password" />
                 </div>
               </MDBCol>
             </MDBRow>
