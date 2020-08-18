@@ -40,7 +40,7 @@ class ToolTabs extends Component {
   render() {
     return (
       <MDBContainer fluid>
-        <h2 className="mt-5 text-center">Pills within the tabs</h2>
+        <h2 className="mt-5 text-center">SOTT Lab Tools</h2>
         <br></br>
         <MDBNav tabs className="nav-justified" color="primary">
           <MDBNavItem>
@@ -62,28 +62,28 @@ class ToolTabs extends Component {
             <MDBRow>
               <MDBCol md="3">
                 <MDBNav pills color="primary" className="flex-column">
-                  <MDBNavItem>
+                  {/* <MDBNavItem>
                     <MDBNavLink link to="#" active={ this.state.activeItemInnerPills === "1"} onClick={this.toggleInnerPills("1")} >
                       Downloads <MDBIcon icon="download" className="ml-2" />
                     </MDBNavLink>
                   </MDBNavItem>
-                  <MDBNavItem>
-                    <MDBNavLink link to="#" active={ this.state.activeItemInnerPills === "2"} onClick={this.toggleInnerPills("2")} >
+                  <MDBNavItem> */}
+                    {/* <MDBNavLink link to="#" active={ this.state.activeItemInnerPills === "2"} onClick={this.toggleInnerPills("2")} >
                       Orders & invoices
                       <MDBIcon icon="file-alt" className="ml-2" />
-                    </MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
+                    </MDBNavLink> */}
+                  {/* </MDBNavItem> */}
+                  {/* <MDBNavItem>
                     <MDBNavLink link to="#" active={ this.state.activeItemInnerPills === "3"} onClick={this.toggleInnerPills("3")} >
                       Billing Details
                       <MDBIcon icon="address-card" className="ml-2" />
                     </MDBNavLink>
-                  </MDBNavItem>
+                  </MDBNavItem> */}
                 </MDBNav>
               </MDBCol>
               <MDBCol md="9">
                 <MDBTabContent activeItem={this.state.activeItemInnerPills}>
-                  <MDBTabPane tabId="1">
+                  {/* <MDBTabPane tabId="1">
                     <h5>Panel 1</h5>
                   </MDBTabPane>
                   <MDBTabPane tabId="2">
@@ -91,14 +91,14 @@ class ToolTabs extends Component {
                   </MDBTabPane>
                   <MDBTabPane tabId="3">
                     <h5>Panel 3</h5>
-                  </MDBTabPane>
+                  </MDBTabPane> */}
                 </MDBTabContent>
               </MDBCol>
             </MDBRow>
           </MDBTabPane>
           <MDBTabPane tabId="2" role="tabpanel">
             <MDBRow>
-              <MDBCol md="6">
+              {/* <MDBCol md="6">
                 <MDBCardBody>
                   <MDBCardTitle>Special Title Treatment</MDBCardTitle>
                   <MDBCardText>
@@ -117,7 +117,7 @@ class ToolTabs extends Component {
                   </MDBCardText>
                   <MDBBtn>Go somewhere</MDBBtn>
                 </MDBCardBody>
-              </MDBCol>
+              </MDBCol> */}
             </MDBRow>
           </MDBTabPane>
         </MDBTabContent>
