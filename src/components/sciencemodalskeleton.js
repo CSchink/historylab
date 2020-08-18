@@ -212,7 +212,7 @@ function ScienceModalSkeleton(props) {
               color="primary"
               onClick={async () => {
                 await editScienceLab();
-                initialState();
+                props.hideModal()
               }}
             >
               Submit

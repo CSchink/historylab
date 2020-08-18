@@ -41,9 +41,7 @@ function Navigation() {
           <MDBNavItem>
             <MDBNavLink to="/sciencelab">Science Lab</MDBNavLink>
           </MDBNavItem>
-          <MDBNavItem>
-            <MDBNavLink to="/tutorial">Tutorial</MDBNavLink>
-          </MDBNavItem>
+
           <MDBNavItem>
             <MDBDropdown>
               <MDBDropdownToggle nav caret>
@@ -57,6 +55,9 @@ function Navigation() {
           </MDBNavItem>
         </MDBNavbarNav>
         <MDBNavbarNav right>
+          <MDBNavItem>
+            <MDBNavLink to="/tutorial">Tutorial</MDBNavLink>
+          </MDBNavItem>
           <MDBNavItem>
             <MDBNavLink to="/signup">Sign Up</MDBNavLink>
           </MDBNavItem>
