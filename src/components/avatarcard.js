@@ -16,10 +16,9 @@ function Avatar() {
         src="https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img%20%283%29.jpg"
       />
       <MDBCardBody cascade>
-        <MDBCardTitle>MDBCard title</MDBCardTitle>
+        <MDBCardTitle>Welcome, User</MDBCardTitle>
         <MDBCardText>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          Maybe a Profile Intro
         </MDBCardText>
       </MDBCardBody>
     </MDBCard>
