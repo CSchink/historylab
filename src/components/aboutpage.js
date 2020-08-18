@@ -57,7 +57,7 @@ function ClassicFormPage() {
             <MDBRow>
               <MDBBtn
                 outline
-                color="elegant"
+                color="light"
                 onClick={() => {
                   history.push("/data");
                 }}
@@ -66,7 +66,7 @@ function ClassicFormPage() {
               </MDBBtn>
               <MDBBtn
                 outline
-                color="elegant"
+                color="light"
                 onClick={() => {
                   history.push("/sciencelab");
                 }}
@@ -74,7 +74,7 @@ function ClassicFormPage() {
                 Science Lab
               </MDBBtn>
               <MDBSmoothScroll to="section1">
-                <MDBBtn outline color="elegant">
+                <MDBBtn outline color="light">
                   Tutorial
                 </MDBBtn>
               </MDBSmoothScroll>

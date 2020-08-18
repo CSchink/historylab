@@ -34,11 +34,18 @@ export async function listScienceEntries(){
 }
 
 export async function editData(request){
- console.log(request)
+
   return instance.put("/editData", request, {
     headers: {authorization: token}
   })
 }
+
+export async function editScienceData(request){
+
+   return instance.put("/editScienceData", request, {
+     headers: {authorization: token}
+   })
+ }
 
 export async function userSignUp(request){
 

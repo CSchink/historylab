@@ -3,8 +3,8 @@ import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import instance from "../util/axiosutil";
 import ModalSkeleton, { modalType } from "./modalskeleton";
+import ScienceModalSkeleton from "./sciencemodalskeleton";
 
 const defaultToolbarSelectStyles = {
   iconButton: {},
@@ -13,7 +13,7 @@ const defaultToolbarSelectStyles = {
   },
 };
 
-function CustomToolbarSelect(props, variant) {
+function CustomScienceToolbar(props) {
   // const { classes } = this.props;
 
   const [modal, setModal] = useState(false);
@@ -29,8 +29,8 @@ function CustomToolbarSelect(props, variant) {
   return (
     <div>
       {modal && (
-        <ModalSkeleton
-          saveAction={modalType.edit}
+        <ScienceModalSkeleton
+        //   saveAction={modalType.edit}
           data={props.editData}
           hideModal={hideModal}
           showModal={showModal}
@@ -51,4 +51,4 @@ function CustomToolbarSelect(props, variant) {
   );
 }
 
-export default CustomToolbarSelect;
+export default CustomScienceToolbar;

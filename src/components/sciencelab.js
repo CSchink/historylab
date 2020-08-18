@@ -4,6 +4,7 @@ import { listScienceEntries } from "../connection";
 import ScienceEntry from "./scienceentry";
 import { render } from "react-dom";
 import Chip from "@material-ui/core/Chip";
+import CustomScienceToolbar from "./customsciencetoolbar";
 
 class ScienceLab extends Component {
   constructor() {
@@ -27,7 +28,20 @@ class ScienceLab extends Component {
       download: true,
       rowsPerPageOptions: [10, 25, 50, 100],
       fixedHeader: true,
+      selectableRowsOnClick: true,
       selectableRows: "single",
+      customToolbarSelect: (selectedRows, displayData, setSelectedRows) => {
+        let editData = undefined;
+
+        if (selectedRows.data.length > 0) {
+          // let editData = displayData[selectedRows.data[0].index]
+          // console.log(editData.data)
+          editData = this.state.sciencelab[selectedRows.data[0].dataIndex];
+         
+        }
+
+        return <CustomScienceToolbar editData={editData} />;
+      },
     };
 
     var columns = [
