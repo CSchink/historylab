@@ -12,6 +12,7 @@ import {
 import ChatPage from "./chatpage";
 import Notifications from "./notifications";
 import Table from "./table";
+import ScienceLab from "./sciencelab";
 
 class ProfilePills extends Component {
   state = {
@@ -44,7 +45,7 @@ class ProfilePills extends Component {
                   active={this.state.items["default"] === "1"}
                   onClick={this.togglePills("default", "1")}
                 >
-                  Tables
+                  History Lab
                 </MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
@@ -54,15 +55,28 @@ class ProfilePills extends Component {
                   active={this.state.items["default"] === "2"}
                   onClick={this.togglePills("default", "2")}
                 >
+                  Science Lab
+                </MDBNavLink>
+              </MDBNavItem>
+              <MDBNavItem>
+                <MDBNavLink
+                  link
+                  to="#"
+                  active={this.state.items["default"] === "3"}
+                  onClick={this.togglePills("default", "3")}
+                >
                   Messages
                 </MDBNavLink>
               </MDBNavItem>
             </MDBNav>
             <MDBTabContent activeItem={this.state.items["default"]}>
               <MDBTabPane tabId="1">
-                <Table/>
+                <Table />
               </MDBTabPane>
               <MDBTabPane tabId="2">
+                <ScienceLab />
+              </MDBTabPane>
+              <MDBTabPane tabId="3">
                 <ChatPage />
               </MDBTabPane>
             </MDBTabContent>

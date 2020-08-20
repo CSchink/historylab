@@ -14,7 +14,7 @@ function Avatar() {
       <MDBCardImage
         cascade
         className="img-fluid"
-        src="https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img%20%283%29.jpg"
+        src={require("../assets/noimage.png")}
       />
       <MDBCardBody cascade>
         <MDBCardTitle>Welcome, User</MDBCardTitle>
