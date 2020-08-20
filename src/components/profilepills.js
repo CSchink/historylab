@@ -11,6 +11,7 @@ import {
 } from "mdbreact";
 import ChatPage from "./chatpage";
 import Notifications from "./notifications";
+import Table from "./table";
 
 class ProfilePills extends Component {
   state = {
@@ -43,7 +44,7 @@ class ProfilePills extends Component {
                   active={this.state.items["default"] === "1"}
                   onClick={this.togglePills("default", "1")}
                 >
-                  Notifications
+                  Tables
                 </MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
@@ -59,7 +60,7 @@ class ProfilePills extends Component {
             </MDBNav>
             <MDBTabContent activeItem={this.state.items["default"]}>
               <MDBTabPane tabId="1">
-                <Notifications />
+                <Table/>
               </MDBTabPane>
               <MDBTabPane tabId="2">
                 <ChatPage />

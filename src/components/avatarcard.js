@@ -7,6 +7,7 @@ import {
   MDBCardText,
 } from "mdbreact";
 
+
 function Avatar() {
   return (
     <MDBCard wide>

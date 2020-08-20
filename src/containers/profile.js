@@ -6,20 +6,24 @@ import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import Avatar from "../components/avatarcard";
 // import Pills from "../components/tutorialpills";
 import BigPills from "../components/bigpills";
-
+import ToolTabs from "../components/tooltabs";
+import "../index.css";
 function Profile(props) {
   const user = props.user;
 
   return (
     <MDBContainer fluid>
-      <MDBRow>
-        <MDBCol md="3">
+      <MDBRow className="bg">
+        <MDBCol md="4"> <Notifications /></MDBCol>
+        <MDBCol md="4">
           <Avatar />
         </MDBCol>
-
-
-
-        <MDBCol md="9">
+        <MDBCol md="4">
+          
+        </MDBCol>
+      </MDBRow>
+      <MDBRow>
+        <MDBCol md="12">
           <ProfilePills />
         </MDBCol>
       </MDBRow>

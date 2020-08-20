@@ -71,3 +71,26 @@ code {
 .pills-purple-gradient .nav-item .nav-link.active {
   background: linear-gradient(40deg, #ff6ec4, #7873f5);
 }
+
+.bg {
+  background-image:  url("./assets/lighthouse.jpg");
+  /* height: 300px; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(254, 254, 255, 0.7),
+    rgb(66, 133, 244) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    45deg,
+    from(rgba(244, 244, 250, 0.418), rgba(66, 133, 244, 0.781) 100%)
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(200, 214, 233, 0.7),
+    rgb(66, 133, 223) 100%
+  );
+  }
