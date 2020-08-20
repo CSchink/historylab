@@ -12,22 +12,27 @@ function Profile(props) {
   const user = props.user;
 
   return (
+      <div>
     <MDBContainer fluid>
       <MDBRow className="bg">
-        <MDBCol md="4"> <Notifications /></MDBCol>
+        <MDBCol md="4"> </MDBCol>
         <MDBCol md="4">
           <Avatar />
         </MDBCol>
         <MDBCol md="4">
-          
+          <Notifications />
         </MDBCol>
+        
       </MDBRow>
+      </MDBContainer>
+    
       <MDBRow>
         <MDBCol md="12">
           <ProfilePills />
         </MDBCol>
       </MDBRow>
-    </MDBContainer>
+    
+      </div>
   );
 }
 

@@ -74,7 +74,7 @@ class Table extends Component {
     const options = {
       filterType: "multiselect",
       responsive: "standard",
-      rowsPerPage: 25,
+      rowsPerPage: 10,
       download: true,
       rowsPerPageOptions: [10, 25, 50, 100],
       fixedHeader: true,

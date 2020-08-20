@@ -34,6 +34,7 @@ class ProfilePills extends Component {
 
   render() {
     return (
+    
       <MDBContainer className="mt-4">
         <MDBRow>
           <MDBCol md="12">
