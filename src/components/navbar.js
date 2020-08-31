@@ -74,15 +74,16 @@ import Logout from "../containers/logout";
 function Navigation(){
     return(
         <Navbar bg="primary" variant="dark" expand="lg">
-          <Navbar.Brand href="/profile">SOTT Lab</Navbar.Brand>
+          <Navbar.Brand href="/sottlab">SOTT Lab</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-            {/* <Nav.Link href="/data">History Lab</Nav.Link>
-              <Nav.Link href="/sciencelab">Science Lab</Nav.Link> */}
+            {/* <Nav className="mr-auto"> */}
+            
+              {/* <Nav.Link href="/sciencelab">Science Lab</Nav.Link> */}
               
-            </Nav>
+            {/* </Nav> */}
             <Nav className="justify-content-end" style={{ width: "100%" }}>
+            {/* <Nav.Link href="/profile">Profile</Nav.Link> */}
             <Nav.Link href="/tutorial">Tutorial</Nav.Link>
               <Nav.Link href="/signup">Sign Up</Nav.Link>
               <Logout/>

@@ -12,6 +12,7 @@ import SignUp from "./components/blogpage";
 import Navigation from "./components/navbar";
 import Profile from "./containers/profile";
 import ToolsPage from "./containers/tools";
+import LabPanels from "./containers/labs";
 // import history from './util/historyutil'
 
 function App() {
@@ -34,16 +35,16 @@ function App() {
         <Route exact path="/">
           <Login />
         </Route>
-        <Route exact path="/profile"><Profile/></Route>
-        <Route exact path="/data">
-          <Table />
+        {/* <Route exact path="/profile"><Profile/></Route> */}
+        <Route exact path="/sottlab">
+        <Profile/>
         </Route>
         <Route exact path="/tutorial">
           <ClassicFormPage />
         </Route>
-        <Route exact path="/sciencelab">
+        {/* <Route exact path="/sciencelab">
           <ScienceLab />
-        </Route>
+        </Route> */}
         <Route exact path="/signup">
           <SignUp />
         </Route>

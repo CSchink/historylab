@@ -98,7 +98,7 @@ function SignUp () {
                     <MDBInput
                       type="text"
                       id="contact-subject"
-                      label="Country"
+                      label="Profile Image"
                       value={country}
                       onChange={(event) => {
                         setCountry(event.target.value);
@@ -132,7 +132,7 @@ function SignUp () {
                 await userSignUp({
                   user: username,
                   password: password,
-                  country: country,
+                  image: country,
                 });
                 resetState()
               }}

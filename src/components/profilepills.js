@@ -35,7 +35,7 @@ class ProfilePills extends Component {
   render() {
     return (
     
-      <MDBContainer className="mt-4">
+      <MDBContainer className="mt-4" fluid>
         <MDBRow>
           <MDBCol md="12">
             <MDBNav className="mt-5 nav-pills">

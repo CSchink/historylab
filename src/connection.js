@@ -1,57 +1,73 @@
 import instance from "./util/axiosutil";
 
-const token = sessionStorage.getItem("token");
+function token() {
+  const verify = sessionStorage.getItem("token");
+  return verify;
+}
 
 export async function listEntries() {
   // const token = sessionStorage.getItem("token");
 
   return instance.get("/listEntries", {
-    headers: { authorization: token },
+    headers: { authorization: token() },
   });
 }
 
 export async function createEntry(request) {
   // const token = sessionStorage.getItem("token");
-   
+
   return instance.post("/createEntry", request, {
-    headers: { authorization: token },
+    headers: { authorization: token() },
   });
 }
 
-export async function createScienceEntry(request){
-  
+export async function createScienceEntry(request) {
   return instance.post("/createScienceEntry", request, {
-    headers: {authorization: token },
+    headers: { authorization: token() },
   });
 }
 
-export async function listScienceEntries(){
+export async function listScienceEntries() {
   // const token = sessionStorage.getItem("token");
 
   return instance.get("/listScienceEntries", {
-    headers: { authorization: token }
-  })
+    headers: { authorization: token() },
+  });
 }
 
-export async function editData(request){
-
+export async function editData(request) {
   return instance.put("/editData", request, {
-    headers: {authorization: token}
-  })
+    headers: { authorization: token() },
+  });
 }
 
-export async function editScienceData(request){
+export async function editScienceData(request) {
+  return instance.put("/editScienceData", request, {
+    headers: { authorization: token() },
+  });
+}
 
-   return instance.put("/editScienceData", request, {
-     headers: {authorization: token}
-   })
- }
-
-export async function userSignUp(request){
-
+export async function userSignUp(request) {
   return instance.post("/signup", request, {
-    headers: {authorization: token}
-  })
+    headers: { authorization: token() },
+  });
+}
+
+export async function getAccount(request, token) {
+  const accountdataresponse = await instance.post("/getaccount", request, {
+    headers: { authorization: token },
+  });
+  return accountdataresponse.data;
+}
+
+export async function getNotifications(request) {
+ const newnotifications = await instance.post('getnotifications' + 'new', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(request.body.newNotifications)
+})
+return newnotifications
 }
 
 // async function deleteEntries(client, userName){

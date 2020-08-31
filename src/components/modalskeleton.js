@@ -285,7 +285,7 @@ async function editHistoryLab(){
                 if (props.saveAction === modalType.create) {
                     //todo: reset the state
                     await sendData()
-                    initialState()
+                    // initialState()
                     
                 } else if (props.saveAction === modalType.edit) {
                     //todo: close the modal

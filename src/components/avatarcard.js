@@ -8,18 +8,19 @@ import {
 } from "mdbreact";
 
 
-function Avatar() {
+function Avatar(props) {
   return (
     <MDBCard wide>
       <MDBCardImage
         cascade
         className="img-fluid"
-        src={require("../assets/noimage.png")}
+        src={props.image}
+        alt="Yo Man Where Yo Pic?"
       />
       <MDBCardBody cascade>
-        <MDBCardTitle>Welcome, User</MDBCardTitle>
+        <MDBCardTitle>Welcome, {props.name}</MDBCardTitle>
         <MDBCardText>
-          Maybe a Profile Intro
+          Your name is {props.name} and I know that because I'm a smart computer!
         </MDBCardText>
       </MDBCardBody>
     </MDBCard>

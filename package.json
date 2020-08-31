@@ -21,6 +21,8 @@
     "mongodb": "^3.5.9",
     "mongodb-stitch-browser-sdk": "^4.8.0",
     "mui-datatables": "^2.15.0",
+    "pusher": "^3.0.1",
+    "pusher-js": "^7.0.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-data-grid": "^7.0.0-canary.16",

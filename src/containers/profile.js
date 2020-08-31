@@ -8,16 +8,22 @@ import Avatar from "../components/avatarcard";
 import BigPills from "../components/bigpills";
 import ToolTabs from "../components/tooltabs";
 import "../index.css";
+import { useAccount } from "../context/account-context";
+
+
+
 function Profile(props) {
   const user = props.user;
-
+  const accountContext = useAccount()
+  console.log(`This is the ${JSON.stringify(accountContext)}`)
+  
   return (
       <div>
     <MDBContainer fluid>
       <MDBRow className="bg">
         <MDBCol md="4"> </MDBCol>
         <MDBCol md="4">
-          <Avatar />
+          <Avatar name={accountContext.account.user} image={accountContext.account.image}/>
         </MDBCol>
         <MDBCol md="4">
           <Notifications />
@@ -25,13 +31,13 @@ function Profile(props) {
         
       </MDBRow>
       </MDBContainer>
-    
+      <MDBContainer fluid>
       <MDBRow>
         <MDBCol md="12">
           <ProfilePills />
         </MDBCol>
       </MDBRow>
-    
+      </MDBContainer>
       </div>
   );
 }

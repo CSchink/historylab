@@ -207,6 +207,7 @@ class Table extends Component {
           filter: true,
           sort: false,
           print: false,
+          display: false,
           filterType: "multiselect",
           customBodyRender: (value) => {
             return value.map((val, key) => {

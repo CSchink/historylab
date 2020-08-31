@@ -40,7 +40,8 @@ class ToolTabs extends Component {
 
   render() {
     return (
-      <MDBContainer fluid>
+   
+      <MDBContainer className='m-0 p-0' style={{ height: '100vh' }} fluid>
         <h2 className="mt-5 text-center">SOTT Lab Tools</h2>
         <br></br>
         <MDBNav tabs className="nav-justified" color="primary">
@@ -61,7 +62,7 @@ class ToolTabs extends Component {
         >
           <MDBTabPane tabId="1" role="tabpanel">
             <MDBRow>
-              <MDBCol md="3">
+              <MDBCol md="9">
                 <MDBNav pills color="primary" className="flex-column">
                     
                   {/* <MDBNavItem>
@@ -97,6 +98,7 @@ class ToolTabs extends Component {
           </MDBTabPane>
         </MDBTabContent>
       </MDBContainer>
+     
     );
   }
 }
