@@ -77,8 +77,13 @@ function ClassicFormPage() {
         <Pills />
       </div>
       <br></br>
+      <img src={require("../assets/sciencelab.jpg")}/>
+      <br></br>
       <div id="section2">
+        <br></br>
         <h1 style={{ textAlign: "center" }}>Science Lab Tutorial Coming Soon!</h1>
+        <br></br>
+        <Pills />
       </div>
     </div>
   );
