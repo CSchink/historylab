@@ -2,21 +2,24 @@ import React from "react";
 import {
   MDBCard,
   MDBCardBody,
-  MDBCardImage,
+  MDBAvatar,
   MDBCardTitle,
   MDBCardText,
+  
 } from "mdbreact";
 
 
 function Avatar(props) {
   return (
     <MDBCard wide>
-      <MDBCardImage
-        cascade
-        className="img-fluid"
+    
+      <MDBAvatar>
+       <img 
+        className="img-fluid w-100"
         src={props.image}
         alt="Yo Man Where Yo Pic?"
       />
+      </MDBAvatar>
       <MDBCardBody cascade>
         <MDBCardTitle>Welcome, {props.name}</MDBCardTitle>
         <MDBCardText>

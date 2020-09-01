@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Logout from "../containers/logout";
+import SideNavPage from "./sidenav";
 
 // import React, { useState } from "react";
 // import {
@@ -36,26 +37,32 @@ import Logout from "../containers/logout";
 //       <MDBCollapse id="navbarCollapse3" isOpen={state} navbar>
 //         <MDBNavbarNav left>
 //           <MDBNavItem>
-//             <MDBNavLink to="/data">History Lab</MDBNavLink>
+//             <MDBNavLink to="/sottlab">SOTT Lab</MDBNavLink>
 //           </MDBNavItem>
-//           <MDBNavItem>
-//             <MDBNavLink to="/sciencelab">Science Lab</MDBNavLink>
-//           </MDBNavItem>
-//           <MDBNavItem>
-//             <MDBDropdown>
+//         </MDBNavbarNav>
+//         <MDBNavItem>
+//           <MDBNavbarNav right> <MDBDropdown>
+     
 //               <MDBDropdownToggle nav caret>
-//                 <span className="mr-2">My Lab</span>
+//                  <span className="mr-2">Account</span>
+
 //               </MDBDropdownToggle>
+ 
 //               <MDBDropdownMenu>
-//                 <MDBDropdownItem href="/profile">Profile</MDBDropdownItem>
-//                 <MDBDropdownItem href="/tools">Tools</MDBDropdownItem>
+//                  <MDBDropdownItem href="/profile">Profile</MDBDropdownItem>
+//                 <MDBDropdownItem href="/signup">Sign Up</MDBDropdownItem>
+//                 <MDBDropdownItem href="/tutorial">Tutorial</MDBDropdownItem>
+
 //               </MDBDropdownMenu>
+
 //             </MDBDropdown>
+ 
 //           </MDBNavItem>
+
 //         </MDBNavbarNav>
 //         <MDBNavbarNav right>
 //           <MDBNavItem>
-//             <MDBNavLink to="/tutorial">Tutorial</MDBNavLink>
+//             <MDBNavLink to="/tutorial"></MDBNavLink>
 //           </MDBNavItem>
 //           <MDBNavItem>
 //             <MDBNavLink to="/signup">Sign Up</MDBNavLink>
@@ -71,26 +78,30 @@ import Logout from "../containers/logout";
 
 // export default Navigation;
 
-function Navigation(){
-    return(
-        <Navbar bg="primary" variant="dark" expand="lg">
-          <Navbar.Brand href="/sottlab">SOTT Lab</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            {/* <Nav className="mr-auto"> */}
-            
-              {/* <Nav.Link href="/sciencelab">Science Lab</Nav.Link> */}
-              
-            {/* </Nav> */}
-            <Nav className="justify-content-end" style={{ width: "100%" }}>
-            {/* <Nav.Link href="/profile">Profile</Nav.Link> */}
-            <Nav.Link href="/tutorial">Tutorial</Nav.Link>
-              <Nav.Link href="/signup">Sign Up</Nav.Link>
-              <Logout/>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-    )
+function Navigation() {
+  return (
+      <div>
+          
+    <Navbar bg="primary" variant="dark" expand="lg">
+      <Navbar.Brand href="/sottlab">SOTT Lab</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        {/* <Nav className="mr-auto"> */}
+
+        {/* <Nav.Link href="/sciencelab">Science Lab</Nav.Link> */}
+
+        {/* </Nav> */}
+        <Nav className="justify-content-end" style={{ width: "100%" }}>
+          {/* <Nav.Link href="/profile">Profile</Nav.Link> */}
+          <Nav.Link href="/tutorial">Tutorial</Nav.Link>
+          <Nav.Link href="/signup">Sign Up</Nav.Link>
+          <Logout />
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+ 
+    </div>
+  );
 }
 
 export default Navigation;

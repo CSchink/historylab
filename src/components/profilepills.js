@@ -46,7 +46,7 @@ class ProfilePills extends Component {
                   active={this.state.items["default"] === "1"}
                   onClick={this.togglePills("default", "1")}
                 >
-                  History Lab
+                  Feed
                 </MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
@@ -56,7 +56,7 @@ class ProfilePills extends Component {
                   active={this.state.items["default"] === "2"}
                   onClick={this.togglePills("default", "2")}
                 >
-                  Science Lab
+                  Notifications
                 </MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
@@ -72,10 +72,10 @@ class ProfilePills extends Component {
             </MDBNav>
             <MDBTabContent activeItem={this.state.items["default"]}>
               <MDBTabPane tabId="1">
-                <Table />
+                <h1>Coming Soon!</h1>
               </MDBTabPane>
               <MDBTabPane tabId="2">
-                <ScienceLab />
+                <h1>Coming Soon!</h1>
               </MDBTabPane>
               <MDBTabPane tabId="3">
                 <ChatPage />

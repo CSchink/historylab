@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { MDBNotification, MDBContainer } from "mdbreact";
-import Pusher from 'pusher-js';
-
+import Pusher from "pusher-js";
 
 function Notifications() {
-  var pusher = new Pusher({
-    appId: "1063466",
-    key: "e01d32568ef94bcc8f8f",
-    secret: "2e55a4e860c2e4314946",
+  const [notifications, setNotifications] = useState(0);
+  const [message, setMessage] = useState("");
+  var pusher = new Pusher("e01d32568ef94bcc8f8f", {
     cluster: "us2",
-    encrypted: true,
   });
-  var channel = pusher.subscribe('historylab');
-  channel.bind('historyinsert', function(data) {
-    alert('An event was triggered with message: ' + data.message);
+  var channel = pusher.subscribe("historylab");
+  channel.bind("historyinsert", function (data) {
+    setMessage(`Somebody entered ${data.message} into History Lab`);
+    
   });
+  let notifynumber = `You have ${notifications} new notification(s)`;
+  // useEffect(() => {
+  //   channel.bind("historyinsert", function (data){
+  //     console.log(notifications)
+  //     setNotifications(notifications + 1)
+  //   })
+   
+  // });
 
   return (
     <div
@@ -28,15 +34,21 @@ function Notifications() {
         paddingTop: "10px",
       }}
     >
-
-
       <MDBContainer>
-        <MDBNotification
+        {/* <MDBNotification
           show
           fade
           iconClassName="text-primary"
           title="New Entries!"
-          message="Someone Posted Something"
+          message={message}
+          text="just now"
+        /> */}
+        <MDBNotification
+          show
+          fade
+          iconClassName="text-primary"
+          title="Updates"
+          message={notifynumber}
           text="just now"
         />
         {/* <MDBNotification

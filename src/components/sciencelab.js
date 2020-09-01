@@ -17,7 +17,6 @@ class ScienceLab extends Component {
   async componentDidMount() {
     const entries = await listScienceEntries();
     this.setState({ sciencelab: entries.data });
-    console.log(entries.data);
   }
 
   render() {

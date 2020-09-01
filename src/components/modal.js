@@ -44,6 +44,8 @@ function DataEntry() {
   const [source, setSource] = useState("");
   const [page, setPage] = useState("");
 
+
+  
   const initialState = () => {
     setDate("");
     setEntry("");
@@ -246,7 +248,7 @@ function DataEntry() {
                   Source: source,
                   Page: page,
                 });
-                initialState();
+                // initialState();
               }}
             >
               Submit

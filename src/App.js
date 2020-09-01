@@ -13,6 +13,8 @@ import Navigation from "./components/navbar";
 import Profile from "./containers/profile";
 import ToolsPage from "./containers/tools";
 import LabPanels from "./containers/labs";
+import SideNavPage from "./components/sidenav";
+import NavbarPage from "./components/sidenav";
 // import history from './util/historyutil'
 
 function App() {
@@ -29,15 +31,15 @@ function App() {
   return (
     // <Router>
     <div>
-      {authContext.loggedIn && <Navigation />}
-
+      {authContext.loggedIn && <NavbarPage/>}
+      
       <Switch>
         <Route exact path="/">
           <Login />
         </Route>
         {/* <Route exact path="/profile"><Profile/></Route> */}
         <Route exact path="/sottlab">
-        <Profile/>
+        <LabPanels/>
         </Route>
         <Route exact path="/tutorial">
           <ClassicFormPage />
@@ -48,8 +50,8 @@ function App() {
         <Route exact path="/signup">
           <SignUp />
         </Route>
-        <Route exact path="/tools">
-          <ToolsPage />
+        <Route exact path="/profile">
+          <Profile />
         </Route>
       </Switch>
     </div>
