@@ -55,33 +55,17 @@ function ClassicFormPage() {
             </MDBRow>
 
             <MDBRow>
-              <MDBBtn
-                outline
-                color="light"
-                onClick={() => {
-                  history.push("/data");
-                }}
-              >
-                History Lab
-              </MDBBtn>
-              <MDBBtn
-                outline
-                color="light"
-                onClick={() => {
-                  history.push("/sciencelab");
-                }}
-              >
-                Science Lab
-              </MDBBtn>
               <MDBSmoothScroll to="section1">
                 <MDBBtn outline color="light">
-                  Tutorial
+                  History Lab Tutorial
                 </MDBBtn>
               </MDBSmoothScroll>
 
-              {/* <MDBSmoothScroll to="section2"><MDBBtn outline color="light">
-                    Watch the Tutorial
-                  </MDBBtn></MDBSmoothScroll> */}
+              <MDBSmoothScroll to="section2">
+                <MDBBtn outline color="light">
+                  Science Lab Tutorial
+                </MDBBtn>
+              </MDBSmoothScroll>
             </MDBRow>
           </MDBContainer>
         </MDBMask>
@@ -89,10 +73,13 @@ function ClassicFormPage() {
       <br></br>
       <br></br>
       <div id="section1">
+        <h1 style={{ textAlign: "center" }}>History Lab Tutorial</h1>
         <Pills />
       </div>
       <br></br>
-      <div id="section2"></div>
+      <div id="section2">
+        <h1 style={{ textAlign: "center" }}>Science Lab Tutorial Coming Soon!</h1>
+      </div>
     </div>
   );
 }
