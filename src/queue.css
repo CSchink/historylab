@@ -5,10 +5,9 @@
 
   .queue-container {
     width: 80vw;
-    margin: 10em auto;
+    /* margin: 10em auto; */
     border-radius: 15px;
-    padding: 20px 10px;
-    border: 3px solid rgb(0, 0, 0);
+    padding: 10px 20px;
     height: auto
   }
 
@@ -41,6 +40,6 @@
     margin: 2.5em 2em;
     width: 80%;
     outline: none;
-    border: solid;
+    /* border: solid; */
     padding: 0.7em;
   } 

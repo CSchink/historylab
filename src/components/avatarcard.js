@@ -15,7 +15,7 @@ function Avatar(props) {
     
       <MDBAvatar>
        <img 
-        className="img-fluid w-100"
+        className="img-fluid "
         src={props.image}
         alt="Yo Man Where Yo Pic?"
       />

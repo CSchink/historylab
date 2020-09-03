@@ -34,7 +34,7 @@ function Profile(props) {
       <MDBContainer fluid>
       <MDBRow>
         <MDBCol md="12">
-          <ProfilePills />
+          <ProfilePills/>
         </MDBCol>
       </MDBRow>
       </MDBContainer>

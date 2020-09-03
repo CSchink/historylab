@@ -1,27 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { MDBNotification, MDBContainer } from "mdbreact";
-import Pusher from "pusher-js";
 
 function Notifications() {
-  const [notifications, setNotifications] = useState(0);
-  const [message, setMessage] = useState("");
-  var pusher = new Pusher("e01d32568ef94bcc8f8f", {
-    cluster: "us2",
-  });
-  var channel = pusher.subscribe("historylab");
-  channel.bind("historyinsert", function (data) {
-    setMessage(`Somebody entered ${data.message} into History Lab`);
-    
-  });
-  let notifynumber = `You have ${notifications} new notification(s)`;
-  // useEffect(() => {
-  //   channel.bind("historyinsert", function (data){
-  //     console.log(notifications)
-  //     setNotifications(notifications + 1)
-  //   })
-   
-  // });
 
+  
   return (
     <div
       style={{
@@ -48,7 +30,7 @@ function Notifications() {
           fade
           iconClassName="text-primary"
           title="Updates"
-          message={notifynumber}
+          message="You have 0 new messages"
           text="just now"
         />
         {/* <MDBNotification

@@ -15,6 +15,7 @@ import ToolsPage from "./containers/tools";
 import LabPanels from "./containers/labs";
 import SideNavPage from "./components/sidenav";
 import NavbarPage from "./components/sidenav";
+import Queue from "./components/queue";
 // import history from './util/historyutil'
 
 function App() {
@@ -52,6 +53,9 @@ function App() {
         </Route>
         <Route exact path="/profile">
           <Profile />
+        </Route>
+        <Route exact path="/articles">
+          <Queue/>
         </Route>
       </Switch>
     </div>

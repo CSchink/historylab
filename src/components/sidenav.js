@@ -43,6 +43,7 @@ class NavbarPage extends Component {
                   </MDBDropdownToggle>
                   <MDBDropdownMenu className="dropdown-primary">
                     <MDBDropdownItem href="/sottlab">Tables</MDBDropdownItem>
+                    <MDBDropdownItem href="/articles">Article Builder</MDBDropdownItem>
                   </MDBDropdownMenu>
                 </MDBDropdown>
               </MDBNavItem>

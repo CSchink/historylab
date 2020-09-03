@@ -7,10 +7,13 @@ function Task({ task,  index, completeTask, removeTask }) {
             className="task"
             style={{ textDecoration: task.completed ? "line-through" : "" }}
         >
-            {task.title}
-
-            <button style={{ background: "red" }} onClick={() => removeTask(index)}>x</button>
-            <button onClick={() => completeTask(index)}>Complete</button>
+            <h2>{task.title}</h2>
+            <button style={{ background: "red" }} onClick={() => removeTask(index)}>Remove</button>
+            <br></br>
+            <p>{task.body}</p>
+            
+            
+            
 
         </div>
     );
@@ -31,19 +34,20 @@ function CreateTask({ addTask }) {
                 type="text"
                 className="input"
                 value={value}
-                placeholder="Add a new book or article"
+                placeholder="Add a new section"
                 onChange={e => setValue(e.target.value)}
             />
         </form>
     );
 }
 
-function Queue() {
+function Queue(props) {
     const [tasksRemaining, setTasksRemaining] = useState(0);
     const [tasks, setTasks] = useState([
         {
-            title: <strong>"Enter Books or Articles for Review"</strong>,
-            completed: false
+            title: <strong>Your Heading Here</strong>,
+            completed: false,
+            body: "Information Goes Here"
         }
     ]);
 
@@ -69,7 +73,7 @@ function Queue() {
 
     return (
         <div className="queue-container">
-            <div className="header">Pending tasks ({tasksRemaining})</div>
+
             <div className="tasks">
                 {tasks.map((task, index) => (
                     <Task

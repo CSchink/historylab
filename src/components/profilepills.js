@@ -13,6 +13,7 @@ import ChatPage from "./chatpage";
 import Notifications from "./notifications";
 import Table from "./table";
 import ScienceLab from "./sciencelab";
+import PanelPage from "./feedcards";
 
 class ProfilePills extends Component {
   state = {
@@ -72,7 +73,7 @@ class ProfilePills extends Component {
             </MDBNav>
             <MDBTabContent activeItem={this.state.items["default"]}>
               <MDBTabPane tabId="1">
-                <h1>Coming Soon!</h1>
+                <PanelPage/>
               </MDBTabPane>
               <MDBTabPane tabId="2">
                 <h1>Coming Soon!</h1>

@@ -5,6 +5,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ModalSkeleton, { modalType } from "./modalskeleton";
 import ScienceModalSkeleton from "./sciencemodalskeleton";
+import AddCircle from '@material-ui/icons/AddCircle'
 
 const defaultToolbarSelectStyles = {
   iconButton: {},
@@ -36,7 +37,11 @@ function CustomScienceToolbar(props) {
           showModal={showModal}
         />
       )}
-
+<Tooltip title={"Add to Builder"}>
+        <IconButton >
+          <AddCircle />
+        </IconButton>
+      </Tooltip>
       <Tooltip title={"Edit"}>
         <IconButton onClick={showModal}>
           <EditIcon />
