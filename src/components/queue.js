@@ -45,9 +45,9 @@ function Queue(props) {
     const [tasksRemaining, setTasksRemaining] = useState(0);
     const [tasks, setTasks] = useState([
         {
-            title: <strong>Your Heading Here</strong>,
+            title: "Your Heading Here",
             completed: false,
-            body: "Information Goes Here"
+            body: "Information goes here"
         }
     ]);
 
@@ -55,7 +55,7 @@ function Queue(props) {
 
 
     const addTask = title => {
-        const newTasks = [...tasks, { title, completed: false }];
+        const newTasks = [...tasks, { title, body: "Information goes here", completed: false }];
         setTasks(newTasks);
     };
 

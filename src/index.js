@@ -10,12 +10,15 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import "./index.css";
 import { AccountProvider } from "./context/account-context";
+import { PusherProvider } from "./context/pusher-context";
 
 ReactDOM.render(
   <Router>
     <AuthProvider>
       <AccountProvider>
+        <PusherProvider>
       <App />
+      </PusherProvider>
       </AccountProvider>
     </AuthProvider>
   </Router>,

@@ -7,6 +7,14 @@ function token() {
   return verify;
 }
 
+export async function listOutlines(request) {
+  // const token = sessionStorage.getItem("token");
+
+  return instance.post("/listOutlines", request, {
+    headers: { authorization: token() },
+  });
+}
+
 export async function listEntries() {
   // const token = sessionStorage.getItem("token");
 
