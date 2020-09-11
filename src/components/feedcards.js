@@ -44,6 +44,11 @@ const PanelPage = (props) => {
                   <MDBCardText>
                     <strong>{item.Entry}</strong>
                   </MDBCardText>
+                  <MDBCardText>
+                    <p>
+                      on {item.Date} at {item.Time}
+                    </p>
+                  </MDBCardText>
                   {/* <MDBPopover placement="left" popover clickable id="popper2">
                 <MDBBtn rounded outline color="primary">
                   
