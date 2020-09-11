@@ -16,6 +16,8 @@ import instance from "../util/axiosutil";
 import { createEntry, getEditData, editData } from "../connection";
 import TagsAutoSelect from "./tagsautoselect";
 
+
+
 export const modalType = {
   create: 1,
   edit: 2,

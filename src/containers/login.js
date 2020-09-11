@@ -13,7 +13,8 @@ import FrontNav from "../components/loginbar";
 // import history from '../util/historyutil';
 import { useHistory } from "react-router-dom";
 import { useAccount } from "../context/account-context";
-import { getAccount } from "../connection";
+import { getAccount, getNotifications } from "../connection";
+import { usePusher } from "../context/pusher-context"
 // todos: add register button that calls createEntry endpoint and check against mongodb
 
 function Login(props) {
@@ -22,6 +23,8 @@ function Login(props) {
   const [password, setPassword] = useState("");
   const history = useHistory();
   const accountContext = useAccount();
+  const PusherContext = usePusher();
+
   // Array Destructuring:
   //    const start = useState("");
   //    const username = start[0];
@@ -30,12 +33,15 @@ function Login(props) {
   //     props.history.push("/data");
   //   }
   async function returnAccount(token) {
+    
     const account = await getAccount({ user: username, password: password }, token);
-
+    const notifications = await PusherContext.retrieveNotifications({User: account.user})
       accountContext.setAccount({
        user: account.user,
-       image: account.image
+       image: account.image,
+       notifications: notifications
       });
+      
   }
 
   return (

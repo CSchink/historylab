@@ -14,7 +14,9 @@ function AuthProvider(props) {
     } 
   const logout = () => { 
       setloggedIn(false)
-      sessionStorage.removeItem('token');
+      // sessionStorage.removeItem('token');
+      sessionStorage.clear();
+
     //   history.push('/') 
 } 
 

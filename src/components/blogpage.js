@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MDBContainer,
   MDBRow,
@@ -9,21 +9,53 @@ import {
 } from "mdbreact";
 import { userSignUp } from "../connection";
 import MultiSelect from "./multiselect";
+import ImageInput from "./imageupload";
+import instance from "../util/axiosutil";
+import ImageUpload from "./imageupload";
 
-function SignUp () {
+const url = "https://api.cloudinary.com/v1_1/dtdsoufsu/image/upload";
+const preset = "nytxylff";
+
+function SignUp() {
   const [email, setEmail] = useState("");
-  const [country, setCountry] = useState("");
+  const [image, setImage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordconfirm, setPasswordConfirm] = useState("");
 
-  function resetState(){
-    setEmail("")
-    setCountry("")
-    setUsername("")
-    setPassword("")
-    setPasswordConfirm("")
+  function resetState() {
+    setEmail("");
+    setImage("");
+    setUsername("");
+    setPassword("");
+    setPasswordConfirm("");
   }
+ 
+  const submitHandler = event => {
+    event.preventDefault();
+    event.target.className += " was-validated";
+  };
+
+  const onSubmit = async () => {
+    const formData = new FormData();
+    formData.append("file", image);
+    formData.append("upload_preset", preset);
+    console.log(formData);
+    try {
+      const res = await instance.post(url, formData);
+      const imageUrl = res.data.secure_url;
+      console.log(imageUrl);
+      await userSignUp({
+        user: username,
+        password: password,
+        image: imageUrl,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+    resetState();
+  };
+
   return (
     <MDBContainer>
       <h2 className="h1-responsive font-weight-bold text-center my-5">
@@ -94,17 +126,24 @@ function SignUp () {
                   </div>
                 </MDBCol>
                 <MDBCol md="12">
-                  <div className="md-form mb-0">
-                    <MDBInput
-                      type="text"
-                      id="contact-subject"
-                      label="Profile Image"
-                      value={country}
-                      onChange={(event) => {
-                        setCountry(event.target.value);
-                      }}
-                    />
-                  </div>
+                  <input type="file"
+                  label="Insert Image"
+                  value={image} 
+                  onChange={(event) => {
+                    setImage(event.target.input.files[0]);
+                    console.log(event.target)
+                  }}/>
+                  {/* <MDBInput
+                    type="file"
+                    id="contact-subject"
+                    
+                    label="Insert Image"
+                    value={image}
+                    onChange={(event) => {
+                      setImage(event.target.input.files[0]);
+                      console.log(event.target)
+                    }}
+                  /> */}
                 </MDBCol>
               </MDBRow>
             </div>
@@ -129,12 +168,7 @@ function SignUp () {
               color="primary"
               size="lg"
               onClick={async () => {
-                await userSignUp({
-                  user: username,
-                  password: password,
-                  image: country,
-                });
-                resetState()
+                await onSubmit();
               }}
             >
               Submit
@@ -144,6 +178,6 @@ function SignUp () {
       </MDBRow>
     </MDBContainer>
   );
-};
+}
 
 export default SignUp;

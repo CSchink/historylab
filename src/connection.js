@@ -1,7 +1,5 @@
 import instance from "./util/axiosutil";
 
-
-
 function token() {
   const verify = sessionStorage.getItem("token");
   return verify;
@@ -25,7 +23,7 @@ export async function listEntries() {
 
 export async function createEntry(request) {
   // const token = sessionStorage.getItem("token");
-  
+
   return instance.post("/createEntry", request, {
     headers: { authorization: token() },
   });
@@ -70,14 +68,17 @@ export async function getAccount(request, token) {
   return accountdataresponse.data;
 }
 
+export async function newNotifications(request) {
+  return instance.post("/newnotifications", request, {
+    headers: { authorization: token() },
+  });
+}
+
 export async function getNotifications(request) {
- const newnotifications = await instance.post('getnotifications' + 'new', {
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(request.body.newNotifications)
-})
-return newnotifications
+  const results = await instance.post("/getnotifications", request, {
+    headers: { authorization: token() },
+  });
+  return results
 }
 
 // async function deleteEntries(client, userName){

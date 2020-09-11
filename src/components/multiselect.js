@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import Select from 'react-select'
 
 const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
+  { value: 'history', label: 'History Lab' },
+  { value: 'philosophy', label: 'Philosophy Lab' },
+  { value: 'science', label: 'Science Lab' }
 ]
 
 

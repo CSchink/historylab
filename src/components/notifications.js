@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MDBNotification, MDBContainer } from "mdbreact";
 import { usePusher } from "../context/pusher-context";
 
-
 function Notifications() {
-  const PusherContext = usePusher()
+  const PusherContext = usePusher();
 
-  
   return (
     <div
       style={{
@@ -34,7 +32,7 @@ function Notifications() {
           iconClassName="text-primary"
           title="Updates"
           // message={`You have ${PusherContext.notifications} new messages`}
-          message={`You have ${PusherContext.getNotifications()} new messages`}
+          message={PusherContext.message}
           text="just now"
         />
         {/* <MDBNotification

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Pusher from "pusher-js";
+import { useAccount } from "./account-context";
+import { newNotifications, getNotifications } from "../connection";
 
 const PusherContext = React.createContext();
 var pusher = new Pusher("e01d32568ef94bcc8f8f", {
@@ -9,48 +11,36 @@ var historychannel = pusher.subscribe("historylab");
 
 function PusherProvider(props) {
   const [notifications, setNotifications] = useState(
-    // 0
-    JSON.parse(sessionStorage.getItem("notifications")) ?? 0
+    JSON.parse(sessionStorage.getItem("notifications"))
   );
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(`You have 0 notifications`);
 
-  //   function HistoryMessages() {
-  //     historychannel.bind(props.channel, function (data) {
-  //       console.log(data.message);
-  //       setMessage(`Somebody entered ${data.message} into History Lab`);
-  //     });
-  //   }
-  console.log("Here");
+  historychannel.bind("historyinsert", function (data) {
+    console.log(`This is the ${JSON.stringify(data)}`);
+  });
 
+  
+
+  async function incrementNotifications() {
+    const newValue = notifications + 1;
+    await setNotifications(newValue);
+  }
+
+  async function retrieveNotifications(data) {
+    let newnotifications = await getNotifications(data);
+    console.log(newnotifications);
+    let notificationumber = await newnotifications.data.length
+
+    console.log(notificationumber);
+    setNotifications(notificationumber);
+    await sessionStorage.setItem("notifications", JSON.stringify(notificationumber));
+    return newnotifications;
+  }
   useEffect(() => {
-    historychannel.bind("historyinsert", function (data) {
-      console.log(`This is the ${JSON.stringify(data)}`);
-      // console.log(notifications)
-      // console.log(notifications + 1)
-      // setNotifications(notifications + 1);
-      incrementNotifications();
-
-      console.log(`You have ${notifications} notifications`);
-    });
+    setMessage(`You have ${notifications} notifications`);
   }, []);
 
-  function incrementNotifications() {
-    // const n = JSON.parse(sessionStorage.getItem("notifications")) ?? 0;
-    const newValue = notifications + 1;
-    console.log(
-      "notifications",
-      notifications,
-      //  "n", n,
-      "newValue",
-      newValue
-    );
-    setNotifications(newValue);
-    sessionStorage.setItem("notifications", JSON.stringify(newValue));
-  }
-
-  function getNotifications() {
-    return notifications;
-  }
+  async function notificationFeed(data) {}
 
   //   useEffect(() => {
   //     console.log(`these are the notifications: ${notifications}`);
@@ -58,7 +48,10 @@ function PusherProvider(props) {
   //   }, [notifications]);
 
   return (
-    <PusherContext.Provider value={{ getNotifications, message }} {...props} />
+    <PusherContext.Provider
+      value={{ incrementNotifications, retrieveNotifications, message }}
+      {...props}
+    />
   );
 }
 

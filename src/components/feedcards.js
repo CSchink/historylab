@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, Fragment } from "react";
 import {
   MDBInput,
   MDBCard,
@@ -14,38 +14,51 @@ import {
   MDBPopoverHeader,
   MDBAvatar,
 } from "mdbreact";
+import { useAccount } from "../context/account-context";
 
 const PanelPage = (props) => {
+  const accountContext = useAccount();
+  const notifyMessage = accountContext.account.notifications.data;
+  console.log(notifyMessage);
+
   return (
     <MDBContainer>
-      <MDBRow className="mb-4">
-        <MDBCol sm="12">
-          <MDBCard border="primary">
-            <MDBCardBody>
-              <MDBAvatar className="mx-auto white">
-                <img
-                  src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
-                  className="rounded-circle float-right"
-                  alt="alignment"
-                />
-              </MDBAvatar>
-              <MDBCardTitle>Something here</MDBCardTitle>
-              <MDBCardText>This is where the updates will appear</MDBCardText>
-              <MDBPopover placement="left" popover clickable id="popper2">
+      {notifyMessage.map((item) => (
+        <Fragment key={item._id}>
+          <MDBRow className="mb-4">
+            <MDBCol sm="12">
+              <MDBCard border="primary">
+                <MDBCardBody>
+                  <MDBAvatar className="mx-auto white">
+                    <img
+                      src={item.Image}
+                      className="rounded-circle float-right"
+                      width="120"
+                      height="120"
+                      alt="alignment"
+                    />
+                  </MDBAvatar>
+                  <MDBCardTitle>
+                    {item.User} posted the following in SOTT Lab:
+                  </MDBCardTitle>
+                  <MDBCardText>
+                    <strong>{item.Entry}</strong>
+                  </MDBCardText>
+                  {/* <MDBPopover placement="left" popover clickable id="popper2">
                 <MDBBtn rounded outline color="primary">
-                  More
+                  
                 </MDBBtn>
                 <div>
                   <MDBPopoverHeader>Details</MDBPopoverHeader>
-                  <MDBPopoverBody>
-                    More details in here
-                  </MDBPopoverBody>
+                  <MDBPopoverBody>More details in here</MDBPopoverBody>
                 </div>
-              </MDBPopover>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
+              </MDBPopover> */}
+                </MDBCardBody>
+              </MDBCard>
+            </MDBCol>
+          </MDBRow>
+        </Fragment>
+      ))}
     </MDBContainer>
   );
 };

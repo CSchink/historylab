@@ -5,7 +5,8 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import instance from "../util/axiosutil";
 import ModalSkeleton, { modalType } from "./modalskeleton";
-import AddCircle from '@material-ui/icons/AddCircle'
+import AddCircle from "@material-ui/icons/AddCircle";
+import OutlineModal from "./outlinemodal";
 
 const defaultToolbarSelectStyles = {
   iconButton: {},
@@ -18,6 +19,7 @@ function CustomToolbarSelect(props) {
   // const { classes } = this.props;
 
   const [modal, setModal] = useState(false);
+  const [outline, setOutline] = useState(false);
 
   const hideModal = () => {
     setModal(false);
@@ -25,6 +27,14 @@ function CustomToolbarSelect(props) {
 
   const showModal = () => {
     setModal(true);
+  };
+
+  const hideOutline = () => {
+    setOutline(false);
+  };
+
+  const showOutline = () => {
+    setOutline(true);
   };
 
   return (
@@ -37,9 +47,16 @@ function CustomToolbarSelect(props) {
           showModal={showModal}
         />
       )}
-<Tooltip title={"Add to Builder"}>
-        <IconButton >
-          <AddCircle />
+      {outline && (
+        <OutlineModal
+          hideOutline={hideOutline}
+          showOutline={showOutline}
+          data={props.editData}
+        />
+      )}
+      <Tooltip title={"Add to Builder"}>
+        <IconButton>
+          <AddCircle onClick={showOutline} />
         </IconButton>
       </Tooltip>
       <Tooltip title={"Edit"}>

@@ -13,10 +13,13 @@ import {
   MDBIcon,
 } from "mdbreact";
 import instance from "../util/axiosutil";
-import { createEntry } from "../connection";
+import { createEntry, newNotifications } from "../connection";
 import TagsAutoSelect from "./tagsautoselect";
 import ModalSkeleton from "./modalskeleton";
-import {modalType} from "./modalskeleton"
+import { modalType } from "./modalskeleton";
+import { usePusher } from "../context/pusher-context";
+import { useAccount } from "../context/account-context";
+
 function DataEntry() {
   const [modal, setModal] = useState(false);
   //   const [state, setState] = useState({
@@ -43,9 +46,9 @@ function DataEntry() {
   const [tags, setTags] = useState("");
   const [source, setSource] = useState("");
   const [page, setPage] = useState("");
-
-
-  
+  const PusherContext = usePusher();
+  const accountContext = useAccount();
+  let today = new Date();
   const initialState = () => {
     setDate("");
     setEntry("");
@@ -68,20 +71,20 @@ function DataEntry() {
     setModal(true);
   };
 
-  async function sendData (){
-      await createEntry({
-        Date: date,
-        Entry: entry,
-        Century: century,
-        Category: category,
-        Origin: origin,
-        Target: target,
-        Cultural: ctags.split(",").map((r) => r.trim()),
-        ptags: ptags.split(",").map((r) => r.trim()),
-        htags: tags.split(",").map((r) => r.trim()),
-        Source: source,
-        Page: page,
-      });
+  async function sendData() {
+    await createEntry({
+      Date: date,
+      Entry: entry,
+      Century: century,
+      Category: category,
+      Origin: origin,
+      Target: target,
+      Cultural: ctags.split(",").map((r) => r.trim()),
+      ptags: ptags.split(",").map((r) => r.trim()),
+      htags: tags.split(",").map((r) => r.trim()),
+      Source: source,
+      Page: page,
+    });
   }
 
   //   function resetState() {
@@ -139,95 +142,95 @@ function DataEntry() {
                   />
                 </MDBCol>
               </MDBRow>
-            
-            <MDBInput
-              label="Entry"
-              value={entry}
-              type="textarea"
-              rows="2"
-              onChange={(event) => {
-                setEntry(event.target.value);
-              }}
-            />
-            <MDBRow>
-              <MDBCol md="6">
-                <MDBInput
-                  label="Originating"
-                  value={origin}
-                  onChange={(event) => {
-                    setOrigin(event.target.value);
-                  }}
-                />
-              </MDBCol>
-              <MDBCol md="6">
-                <MDBInput
-                  label="Target"
-                  value={target}
-                  onChange={(event) => {
-                    setTarget(event.target.value);
-                  }}
-                />
-              </MDBCol>
-            </MDBRow>
 
-            <MDBRow>
-              <MDBCol md="6">
-                <MDBInput
-                  label="SOTT Category"
-                  value={category}
-                  onChange={(event) => {
-                    console.log(event.target);
-                    setCategory(event.target.value);
-                  }}
-                />
-              </MDBCol>
-              <MDBCol md='6'>
               <MDBInput
-                label="Cultural Tags"
-                value={ctags}
+                label="Entry"
+                value={entry}
+                type="textarea"
+                rows="2"
                 onChange={(event) => {
-                  setCtags(event.target.value);
+                  setEntry(event.target.value);
                 }}
               />
-              </MDBCol>
-            </MDBRow>
-            <MDBRow>
-            <MDBCol md='6'>
+              <MDBRow>
+                <MDBCol md="6">
+                  <MDBInput
+                    label="Originating"
+                    value={origin}
+                    onChange={(event) => {
+                      setOrigin(event.target.value);
+                    }}
+                  />
+                </MDBCol>
+                <MDBCol md="6">
+                  <MDBInput
+                    label="Target"
+                    value={target}
+                    onChange={(event) => {
+                      setTarget(event.target.value);
+                    }}
+                  />
+                </MDBCol>
+              </MDBRow>
+
+              <MDBRow>
+                <MDBCol md="6">
+                  <MDBInput
+                    label="SOTT Category"
+                    value={category}
+                    onChange={(event) => {
+                      console.log(event.target);
+                      setCategory(event.target.value);
+                    }}
+                  />
+                </MDBCol>
+                <MDBCol md="6">
+                  <MDBInput
+                    label="Cultural Tags"
+                    value={ctags}
+                    onChange={(event) => {
+                      setCtags(event.target.value);
+                    }}
+                  />
+                </MDBCol>
+              </MDBRow>
+              <MDBRow>
+                <MDBCol md="6">
+                  <MDBInput
+                    label="Ponerology Tags"
+                    value={ptags}
+                    onChange={(event) => {
+                      setPtags(event.target.value);
+                    }}
+                  />
+                </MDBCol>
+                <MDBCol md="6">
+                  <MDBInput
+                    label="General Tags"
+                    value={tags}
+                    onChange={(event) => {
+                      setTags(event.target.value);
+                    }}
+                  />
+                </MDBCol>
+              </MDBRow>
               <MDBInput
-                label="Ponerology Tags"
-                value={ptags}
+                label="Source"
+                value={source}
                 onChange={(event) => {
-                  setPtags(event.target.value);
+                  setSource(event.target.value);
                 }}
               />
-              </MDBCol>
-              <MDBCol md='6'>
               <MDBInput
-                label="General Tags"
-                value={tags}
+                label="Page"
+                value={page}
                 onChange={(event) => {
-                  setTags(event.target.value);
+                  setPage(event.target.value);
                 }}
               />
-              </MDBCol>
-            </MDBRow>
-            <MDBInput
-              label="Source"
-              value={source}
-              onChange={(event) => {
-                setSource(event.target.value);
-              }}
-            />
-            <MDBInput
-              label="Page"
-              value={page}
-              onChange={(event) => {
-                setPage(event.target.value);
-              }}
-            />
             </MDBContainer>
           </MDBModalBody>
-          
+
           <MDBModalFooter>
             <MDBBtn color="secondary" onClick={hideModal}>
               Close
@@ -247,6 +250,14 @@ function DataEntry() {
                   htags: tags.split(",").map((r) => r.trim()),
                   Source: source,
                   Page: page,
+                });
+                PusherContext.incrementNotifications();
+                newNotifications({
+                  Entry: entry,
+                  User: accountContext.account.user,
+                  Image: accountContext.account.image,
+                  Date: today.toLocaleDateString(),
+                  Time: today.toLocaleTimeString()
                 });
                 // initialState();
               }}
