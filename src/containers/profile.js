@@ -26,7 +26,7 @@ function Profile(props) {
           <Avatar name={accountContext.account.user} image={accountContext.account.image}/>
         </MDBCol>
         <MDBCol md="4">
-          <Notifications />
+          {/* <Notifications /> */}
         </MDBCol>
         
       </MDBRow>

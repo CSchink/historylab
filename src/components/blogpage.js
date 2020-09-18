@@ -30,8 +30,8 @@ function SignUp() {
     setPassword("");
     setPasswordConfirm("");
   }
- 
-  const submitHandler = event => {
+
+  const submitHandler = (event) => {
     event.preventDefault();
     event.target.className += " was-validated";
   };
@@ -126,13 +126,14 @@ function SignUp() {
                   </div>
                 </MDBCol>
                 <MDBCol md="12">
-                  <input type="file"
-                  label="Insert Image"
-                  value={image} 
-                  onChange={(event) => {
-                    setImage(event.target.input.files[0]);
-                    console.log(event.target)
-                  }}/>
+                  <MDBInput
+                    type="text"
+                    label="Insert Image"
+                    value={image}
+                    onChange={(event) => {
+                      setImage(event.target.value);
+                    }}
+                  />
                   {/* <MDBInput
                     type="file"
                     id="contact-subject"

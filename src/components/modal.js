@@ -257,7 +257,9 @@ function DataEntry() {
                   User: accountContext.account.user,
                   Image: accountContext.account.image,
                   Date: today.toLocaleDateString(),
-                  Time: today.toLocaleTimeString()
+                  Time: today.toLocaleTimeString(),
+                  Type: 'entered',
+                  Table: 'History Lab'
                 });
                 // initialState();
               }}

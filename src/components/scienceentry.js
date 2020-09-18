@@ -12,8 +12,8 @@ import {
   MDBBtnFixed,
   MDBIcon,
 } from "mdbreact";
-
-import { createScienceEntry } from "../connection";
+import { useAccount } from "../context/account-context";
+import { createScienceEntry, newNotifications } from "../connection";
 
 function ScienceEntry() {
   const [modal, setModal] = useState(false);
@@ -30,6 +30,7 @@ function ScienceEntry() {
   //     source: "",
   //     page: "",
   //   });
+  let today = new Date();
   const [date, setDate] = useState("");
   const [entry, setEntry] = useState("");
   const [field, setField] = useState("");
@@ -37,7 +38,7 @@ function ScienceEntry() {
   const [source, setSource] = useState("");
   const [page, setPage] = useState("");
   const [tags, setTags] = useState("");
-
+  const accountContext = useAccount();
   const initialState = () => {
     setDate("");
     setEntry("");
@@ -165,6 +166,15 @@ function ScienceEntry() {
                   Tags: tags.split(",").map((r) => r.trim()),
                   Source: source,
                   Page: page,
+                });
+                await newNotifications({
+                  Entry: entry,
+                  User: accountContext.account.user,
+                  Image: accountContext.account.image,
+                  Date: today.toLocaleDateString(),
+                  Time: today.toLocaleTimeString(),
+                  Type: "entered",
+                  Table: "Science Lab",
                 });
                 initialState();
               }}

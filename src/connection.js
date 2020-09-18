@@ -1,5 +1,7 @@
 import instance from "./util/axiosutil";
 
+
+
 function token() {
   const verify = sessionStorage.getItem("token");
   return verify;
@@ -56,6 +58,7 @@ export async function editScienceData(request) {
 }
 
 export async function userSignUp(request) {
+  
   return instance.post("/signup", request, {
     headers: { authorization: token() },
   });
