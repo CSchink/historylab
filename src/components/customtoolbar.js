@@ -7,6 +7,14 @@ import instance from "../util/axiosutil";
 import ModalSkeleton, { modalType } from "./modalskeleton";
 import AddCircle from "@material-ui/icons/AddCircle";
 import OutlineModal from "./outlinemodal";
+import {
+  MDBContainer,
+  MDBBtn,
+  MDBModal,
+  MDBModalBody,
+  MDBModalHeader,
+  MDBModalFooter,
+} from "mdbreact";
 
 const defaultToolbarSelectStyles = {
   iconButton: {},
@@ -48,13 +56,23 @@ function CustomToolbarSelect(props) {
         />
       )}
       {outline && (
-        <OutlineModal
-          hideOutline={hideOutline}
-          showOutline={showOutline}
-          data={props.editData}
-        />
+        <MDBContainer>
+          <MDBModal size="lg" frame position="top" isOpen={outline}>
+            <MDBModalHeader>Add to Article Builder</MDBModalHeader>
+            <MDBModalBody>
+              <p>{props.editData.Date}</p>
+              <p>{props.editData.Entry}</p>
+            </MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn color="secondary" onClick={hideOutline}>
+                Close
+              </MDBBtn>
+              <MDBBtn color="primary">Save changes</MDBBtn>
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBContainer>
       )}
-      <Tooltip title={"Add to Builder"}>
+      <Tooltip title={"Add to Article Builder"}>
         <IconButton>
           <AddCircle onClick={showOutline} />
         </IconButton>

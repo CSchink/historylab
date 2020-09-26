@@ -1,16 +1,35 @@
-import React, { Component } from 'react'
-import Select from 'react-select'
+import React, { useState } from "react";
+import Select from "react-select";
+import { getOutlines } from "../connection";
+import { useAccount } from "../context/account-context";
 
-const options = [
-  { value: 'history', label: 'History Lab' },
-  { value: 'philosophy', label: 'Philosophy Lab' },
-  { value: 'science', label: 'Science Lab' }
-]
+function MultiSelect() {
+  debugger;
+  const [options, setOptions] = useState({ label: "", value: "" });
+  const [selectedOption, setSelectedOption] = useState(null);
 
+  const accountContext = useAccount();
+  const user = accountContext.account.user;
 
+  async function getOptions() {
+    const results = await getOutlines(user);
+    const newOptions = results.map((x) => ({
+      label: x.Title,
+      value: x.Title,
+    }));
+    setOptions(newOptions);
+    return newOptions
+  }
 
-const MultiSelect = () => (
-  <Select options={options} />
-)
+  return (
+    <Select
+      defaultValue={selectedOption}
+      onChange={setSelectedOption}
+      options={getOptions}
+      isSearchable
+      isMulti
+    />
+  );
+}
 
-export default MultiSelect
+export default MultiSelect;

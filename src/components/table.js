@@ -181,7 +181,7 @@ class Table extends Component {
         );
 
         let newestData = newData.forEach((result) => {
-          Object.keys(result).forEach((a, key) => {
+          Object.keys(result).forEach((key) => {
             if (typeof result[key] === "string") {
               result[key] = result[key]
               console.log("string", result[key]);

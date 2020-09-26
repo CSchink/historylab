@@ -17,10 +17,11 @@ function OutlineModal (props) {
     
           
 
-          <MDBModal isOpen={props.showOutline} size="lg"  frame  position="top">
+          <MDBModal size="lg"  frame  position="top" isOpen={props.showOutline}>
             <MDBModalHeader>MDBModal title</MDBModalHeader>
             <MDBModalBody>
-              {props.data}
+              <h2>Entry</h2>
+              <p>{props.data}</p>
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color="secondary" onClick={props.hideOutline}>Close</MDBBtn>

@@ -7,14 +7,6 @@ function token() {
   return verify;
 }
 
-export async function listOutlines(request) {
-  // const token = sessionStorage.getItem("token");
-
-  return instance.post("/listOutlines", request, {
-    headers: { authorization: token() },
-  });
-}
-
 export async function listEntries() {
   // const token = sessionStorage.getItem("token");
 
@@ -69,6 +61,21 @@ export async function getAccount(request, token) {
     headers: { authorization: token },
   });
   return accountdataresponse.data;
+}
+
+export async function getOutlines(request) {
+  debugger;
+  const outlinedataresponse = await instance.post("/listoutlines", request, {
+    headers: { authorization: token() },
+  });
+  return outlinedataresponse.data;
+}
+
+export async function createOutlines(request) {
+  const outlinedataresponse = await instance.post("/articleentry", request, {
+    headers: { authorization: token() },
+  });
+  return outlinedataresponse.data;
 }
 
 export async function newNotifications(request) {

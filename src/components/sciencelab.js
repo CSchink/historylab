@@ -36,7 +36,6 @@ class ScienceLab extends Component {
           // let editData = displayData[selectedRows.data[0].index]
           // console.log(editData.data)
           editData = this.state.sciencelab[selectedRows.data[0].dataIndex];
-         
         }
 
         return <CustomScienceToolbar editData={editData} />;
@@ -73,7 +72,7 @@ class ScienceLab extends Component {
         name: "Tags",
         label: "Keywords",
         options: {
-        //   display: false,
+          //   display: false,
           customBodyRender: (value) => {
             return value.map((val, key) => {
               if (val !== null) {
